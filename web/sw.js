@@ -1,4 +1,4 @@
-const VERSION = 'pwt-v11-0-bounded-team-builder';
+const VERSION = 'pwt-v11-1-tab-branding';
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 const PRECACHE = [
