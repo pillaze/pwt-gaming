@@ -1,0 +1,1 @@
+PWT v11.1: Team Builder freeze mitigation from v11.0, rating computation restored exactly to v10.9 (original KO denominator). No player ratings hard-coded. Win Impact 8%, Context 3%.

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 880">
+<defs>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#633000"/><stop offset=".13" stop-color="#d66a08"/><stop offset=".30" stop-color="#fff3b6"/><stop offset=".42" stop-color="#ffbf28"/><stop offset=".60" stop-color="#fff0a0"/><stop offset=".74" stop-color="#df730b"/><stop offset="1" stop-color="#592100"/></linearGradient>
+ <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#252b34"/><stop offset=".55" stop-color="#0c1016"/><stop offset="1" stop-color="#020304"/></linearGradient>
+ <radialGradient id="shine"><stop stop-color="#fffbd0"/><stop offset=".25" stop-color="#ffd257"/><stop offset="1" stop-color="#ff8a00" stop-opacity="0"/></radialGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="shadow"><feDropShadow dx="0" dy="30" stdDeviation="20" flood-color="#000" flood-opacity=".85"/></filter>
+</defs>
+<g filter="url(#shadow)">
+ <ellipse cx="350" cy="805" rx="210" ry="38" fill="#000" opacity=".62"/>
+ <!-- parachute halo -->
+ <path d="M145 245c35-145 375-145 410 0-47-61-91-77-137-83-42-6-85-6-136 0-48 6-93 22-137 83Z" fill="none" stroke="#ffb31f" stroke-width="13" opacity=".32"/>
+ <path d="M192 192 281 330M508 192 419 330M350 155v171" stroke="#ffb31f" stroke-width="5" opacity=".22"/>
+ <!-- handles -->
+ <path d="M211 294H94c0 144 58 225 175 247" fill="none" stroke="url(#gold)" stroke-width="48" stroke-linecap="round"/>
+ <path d="M489 294h117c0 144-58 225-175 247" fill="none" stroke="url(#gold)" stroke-width="48" stroke-linecap="round"/>
+ <path d="M215 264h270l-20 177c-8 95-57 167-115 197-58-30-107-102-115-197Z" fill="url(#gold)" stroke="#ffd76a" stroke-width="10"/>
+ <!-- helmet crest -->
+ <path d="M242 339c27-68 189-68 216 0l-16 104H258Z" fill="url(#dark)" stroke="#f2a718" stroke-width="10"/>
+ <path d="M268 348c34-35 130-35 164 0l-10 31H278Z" fill="#232935"/>
+ <rect x="286" y="379" width="128" height="55" rx="18" fill="#07090c" stroke="#ffba22" stroke-width="8"/>
+ <circle cx="316" cy="406" r="10" fill="#62dfff" filter="url(#glow)"/><circle cx="384" cy="406" r="10" fill="#62dfff" filter="url(#glow)"/>
+ <!-- central PWT shield -->
+ <path d="M350 455 424 492 405 577 350 622 295 577 276 492Z" fill="#090c10" stroke="#ffd55b" stroke-width="8"/>
+ <text x="350" y="548" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="58" font-weight="900" fill="#ffc22f">PWT</text>
+ <!-- frying pan medallion -->
+ <circle cx="350" cy="666" r="42" fill="url(#dark)" stroke="url(#gold)" stroke-width="10"/>
+ <path d="M384 635 441 579" stroke="url(#gold)" stroke-width="17" stroke-linecap="round"/>
+ <circle cx="350" cy="666" r="24" fill="#151a21"/>
+ <!-- stem/base -->
+ <path d="M329 704h42v61h-42z" fill="url(#gold)"/>
+ <path d="M249 758h202l39 52H210Z" fill="url(#gold)" stroke="#ffd35d" stroke-width="8"/>
+ <path d="M173 808h354v48H173Z" fill="url(#dark)" stroke="url(#gold)" stroke-width="8"/>
+ <text x="350" y="842" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="26" font-weight="900" fill="#ffc533" letter-spacing="5">WOW 2026</text>
+ <circle cx="462" cy="316" r="78" fill="url(#shine)" opacity=".35"/>
+</g></svg>
