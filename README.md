@@ -60,3 +60,7 @@ Known migration identifiers (metadata only): `20260929130652`, `20260929130749`,
 ## Version notes
 
 This package uses the v11.1 website source snapshot, not an independently verified export of the currently live Netlify deploy. Later live-site edits will not automatically be included.
+
+## Player Lobby redesign (local work)
+
+The current source includes the mobile Lobby, availability polls, and notification inbox. New backend additions and deployment checks are documented in [docs/CHAT_LOBBY_DEPLOYMENT.md](docs/CHAT_LOBBY_DEPLOYMENT.md). These additions have not been applied to the production database or deployed. Run `node tests/chat-regression.cjs` and `node tests/chat-push.cjs` for isolated logic checks; use `python3 tests/build_chat_preview.py` for a sample-only UI preview.

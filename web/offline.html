@@ -840,7 +840,27 @@ button,a,[role="button"],summary{touch-action:manipulation}
 .birthdayEvent.on{display:block}.birthdayEventInner{max-width:var(--site);margin:auto;padding:18px 26px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;position:relative;z-index:2}.birthdayCake{width:64px;height:64px;display:grid;place-items:center;font-size:42px;border:1px solid #ffd15c66;background:#080d13;box-shadow:0 0 26px #ffba3440;transform:rotate(-3deg)}.birthdayCopy .lab{color:#ffda68}.birthdayCopy h2{font-family:Impact,"Arial Black",sans-serif;font-size:clamp(25px,3.2vw,48px);line-height:.95;margin:4px 0;color:#fff;letter-spacing:.025em}.birthdayCopy h2 span{background:linear-gradient(90deg,#ffdf65,#ff8c36,#ff63b5,#b98cff);-webkit-background-clip:text;color:transparent}.birthdayCopy p{margin:5px 0 0;color:#bac5d1;font-size:11px}.birthdayBossBtn{border:1px solid #ffd25d;background:linear-gradient(135deg,#ff8b1b,#ffd84e);color:#1b0b00;font-weight:1000;padding:12px 16px;cursor:pointer;letter-spacing:.06em}.birthdaySpark{position:absolute;font-size:15px;pointer-events:none;animation:bdayFall linear forwards;z-index:99999}@keyframes bdayFall{0%{transform:translate3d(0,-30px,0) rotate(0);opacity:1}100%{transform:translate3d(var(--drift),105vh,0) rotate(720deg);opacity:.15}}.birthdayRow{background:linear-gradient(90deg,#ffbd2412,transparent 55%)!important;box-shadow:inset 3px 0 #ffc32d}.birthdayMini{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:2px 6px;border:1px solid #ffca4d77;background:#ffb52212;color:#ffd75e;font-size:7px;font-weight:1000;letter-spacing:.08em;white-space:nowrap}.careerCard.birthdayBossCard{border-color:#ffd55f!important;box-shadow:0 0 0 1px #ffb32633,0 0 42px #ff7d2730,inset 0 0 55px #ffbd1612!important}.careerCard.birthdayBossCard:after{content:"🎂 BIRTHDAY BOSS · OCT 05";position:absolute;right:12px;top:10px;color:#ffd55f;font-size:8px;font-weight:1000;letter-spacing:.12em;background:#120d08dd;border:1px solid #ffd55f55;padding:6px 8px;z-index:3}.birthdayHonor{border-color:#ffca4d!important;background:linear-gradient(135deg,#251507,#160b17)!important}.birthdayHonor .medalIcon{border-color:#ffcf57!important;box-shadow:0 0 24px #ffb42966!important}
 @media(max-width:700px){.birthdayEventInner{padding:14px;grid-template-columns:50px 1fr;gap:11px}.birthdayCake{width:50px;height:50px;font-size:32px}.birthdayBossBtn{grid-column:1/-1;width:100%}.birthdayCopy h2{font-size:27px}.birthdayCopy p{font-size:9px}.careerCard.birthdayBossCard:after{position:static;display:inline-block;margin:0 0 10px}}
 
+
+/* Distinct login, registration and signed-in account views. */
+.authCard [hidden]{display:none!important}
+.authCard h2{font-size:28px;line-height:1.15;margin:12px 0}
+.authIntro{color:#b1bdcb;font-size:13px;line-height:1.6;margin:0 0 20px}
+.authModeSwitch{display:grid;grid-template-columns:1fr 1fr;background:#070c12;border:1px solid #344150;padding:4px;gap:4px;margin-bottom:18px}
+.authModeSwitch button{padding:12px 6px;border:0;background:transparent;color:#b1bdcb;font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.authModeSwitch button[aria-pressed="true"]{background:#ffc32d;color:#171000}
+.authCard label{display:block;font-size:12px;font-weight:700;margin-top:15px;color:#e2e8f0}
+.authHint{font-size:11px;line-height:1.6;color:#a7b5c5;margin:8px 0}
+.authCard .authButtons{grid-template-columns:1fr;margin-top:18px}
+.authCard .authMsg{font-size:12px;line-height:1.6}
+.authSwitchPrompt{text-align:center;border-top:1px solid #293544;padding-top:16px;color:#a7b5c5;font-size:12px}
+.authSwitchPrompt button{border:0;background:none;color:#ffd34c;font:inherit;font-weight:800;cursor:pointer;padding:6px}
+#authIn .signedProfile{padding:18px;margin:18px 0}
+#authSignedName,#authSignedEmail{display:block;overflow-wrap:anywhere}
+#authSignedName{font-size:20px;margin-bottom:8px}
+#authSignedEmail{font-size:13px;color:#a7b5c5}
+.authCard :focus-visible{outline:2px solid #ffd34c;outline-offset:3px}
 </style>
+<link rel="stylesheet" href="/assets/chat.css">
 </head>
 <body>
 <div class="boot" id="boot"><div class="bootInner"><img class="bootLogo" src="assets/pwt_logo.svg"><div class="bootTitle">INITIALIZING <b>PWT 2026</b> COMMAND CENTER</div><div class="bootBar"><i></i></div></div></div>
@@ -857,7 +877,7 @@ button,a,[role="button"],summary{touch-action:manipulation}
     <button class="pwaInstallBtn" id="pwaInstallBtn" type="button">INSTALL APP</button>
     <button class="topBtn" id="fxToggle" type="button">FX ON</button>
     <button class="audioBtn" id="audioBtn" type="button" aria-label="Audio settings">🔊 <span class="audioLabel">AUDIO</span></button>
-    <button class="topBtn profileBtn" id="accountBtn" type="button"><span>SIGN IN</span></button>
+    <button class="topBtn profileBtn" id="accountBtn" type="button" aria-label="Log in or create an account"><img src="/assets/account-person.svg" alt="" class="accountAvatar"><span>Log in</span></button>
     <div class="livePill">● LIVE</div>
   </div>
 </header>
@@ -914,6 +934,10 @@ button,a,[role="button"],summary{touch-action:manipulation}
 
 <main class="app">
 <section class="page on section" id="home">
+  <section class="chatHome" aria-label="Squad chat">
+    <div><div class="lab">THE SQUAD HANGOUT</div><h2>Who’s playing tonight?</h2><p>One Lobby for every PWT player. Pick a time, vote on tonight’s plan, and get the squad together.</p><div class="chatHomeActions"><button class="chatAction primary" data-chat-lobby>Enter the Player Lobby →</button></div></div>
+    <div class="chatHomeRecent"><header><b id="chatHomeUnread">Your conversations</b><button data-chat-inbox>Notifications <span id="chatHomeBadge" class="chatBadge"></span></button></header><div id="chatHomeRecent"></div></div>
+  </section>
   <div class="metrics reveal" id="metrics"></div>
   <div class="untrackedOverview reveal" id="untrackedOverview"><span id="untrackedOverviewText"></span><button class="miniBtn" id="viewUntrackedPlayers">VIEW COMMUNITY PLAYERS</button></div>
 
@@ -1049,34 +1073,35 @@ button,a,[role="button"],summary{touch-action:manipulation}
 
 
 <section class="page section" id="chats">
-  <div class="head"><div><div class="lab">PWT v10.4 COMMS · MOBILE NAV FIX</div><h2>CHATS</h2></div><div class="chatTopActions"><button class="chatAction" id="chatPushBtn">🔔 ENABLE NOTIFICATIONS</button><button class="chatAction" id="chatRefresh">↻ REFRESH</button></div></div>
-  <div class="note" id="chatSignedOutNote" style="display:none">Sign in to use private PWT messaging. Your existing PWT account is your chat identity.</div>
+  <div class="head"><div><button class="chatReturnHome" data-jump="home">← Back to PWT</button><h2 id="chatWorkspaceTitle">Chats</h2></div><div class="chatTopActions"><button class="chatAction" data-chat-inbox>Inbox <span class="chatBadge" id="chatInboxBadge"></span></button><button class="chatAccountBtn" id="chatAccountBtn" aria-label="Log in or create an account"><img src="/assets/account-person.svg" alt="" class="accountAvatar"><span>Log in</span></button><button class="chatAction" id="chatPushBtn" hidden>Alerts</button><button class="chatAction" id="chatRefresh">↻ REFRESH</button></div></div>
+  <div class="chatLobbyNav"><button id="chatLobbyTab" aria-pressed="true">Lobby</button><button id="chatPrivateTab" aria-pressed="false">Messages</button></div>
+  <div class="note" id="chatSignedOutNote" style="display:none">Log in to message your teammates. <button class="chatAction primary" data-chat-login>Log in to chat</button></div>
   <div class="chatShell" id="chatShell">
     <aside class="chatSidebar">
-      <div class="chatSidebarHead">
-        <div class="chatSidebarButtons"><button class="chatAction primary" id="newDmBtn">＋ NEW CHAT</button><button class="chatAction" id="newGroupBtn">＋ GROUP</button></div>
-        <input class="chatSearch" id="chatSearch" placeholder="Search chats…" autocomplete="off">
-        <div class="chatFilters"><button class="chatFilter on" data-chat-filter="all">ALL</button><button class="chatFilter" data-chat-filter="unread">UNREAD</button><button class="chatFilter" data-chat-filter="archived">ARCHIVED</button></div>
+      <div class="chatSidebarHead"><div class="chatSidebarTitle"><b>Messages</b><span>YOUR PWT CIRCLE</span></div>
+        <div class="chatSidebarButtons"><button class="chatAction primary" id="newDmBtn">＋ Message</button><button class="chatAction" id="newGroupBtn">＋ Group</button></div>
+        <input class="chatSearch" id="chatSearch" aria-label="Search conversations" placeholder="Search conversations…" autocomplete="off">
+        <div class="chatFilters"><button class="chatFilter on" data-chat-filter="all" aria-pressed="true">All</button><button class="chatFilter" data-chat-filter="unread" aria-pressed="false">Unread</button><button class="chatFilter" data-chat-filter="groups" aria-pressed="false">Groups</button><button class="chatFilter" data-chat-filter="archived" aria-pressed="false">Archived</button></div>
       </div>
-      <div class="chatList" id="chatList"><div class="empty">Sign in to load chats.</div></div>
+      <div class="chatList" id="chatList" aria-label="Conversations"><div class="chatWelcome">Loading your conversations…</div></div><div class="chatSidebarFoot">Private conversations · Shared match moments</div>
     </aside>
     <main class="chatThread" id="chatThread">
       <div class="chatThreadHeader">
-        <button class="chatBack" id="chatBack">←</button>
+        <button class="chatBack" id="chatBack" aria-label="Back to conversations">←</button>
         <img class="chatThreadAvatar" id="chatThreadAvatar" src="assets/pwt_logo.svg" alt="">
-        <div class="chatThreadIdentity"><b id="chatThreadName">PWT COMMS</b><span id="chatPresenceText">Select a conversation</span></div>
-        <div class="chatHeaderActions"><button class="chatIconBtn" id="chatThreadSearch" title="Search">⌕</button><button class="chatIconBtn" id="chatStarredBtn" title="Starred">★</button><button class="chatIconBtn" id="chatInfoBtn" title="Chat info">⋮</button></div>
+        <div class="chatThreadIdentity"><b id="chatThreadName">Squad chat</b><span id="chatPresenceText">Select a conversation</span></div>
+        <div class="chatHeaderActions"><button class="chatIconBtn" id="chatThreadSearch" title="Search loaded messages" aria-label="Search messages">⌕</button><button class="chatIconBtn" id="chatStarredBtn" title="Starred messages" aria-label="Starred messages" aria-pressed="false">★</button><button class="chatIconBtn" id="chatInfoBtn" title="Chat info" aria-label="Conversation settings">⋮</button></div>
       </div>
-      <div class="chatMessagesWrap"><div class="chatMessages" id="chatMessages"><div class="chatEmpty"><div><img class="chatEmptyLogo" src="assets/pwt_logo.svg"><h3>PWT COMMS</h3><p>Select a chat or start a new conversation.</p></div></div></div><div class="chatTyping" id="chatTyping"></div></div>
-      <div class="chatComposerWrap">
+      <div class="chatThreadSearchBar" id="chatThreadSearchBar" hidden><input id="chatThreadQuery" type="search" placeholder="Search loaded messages…" aria-label="Search loaded messages"><button class="chatIconBtn" id="chatSearchClose" aria-label="Close message search">×</button></div>
+      <div class="chatMessagesWrap"><div class="chatMessages" id="chatMessages"><div class="chatEmpty"><div><img class="chatEmptyLogo" src="assets/pwt_logo.svg"><h3>Your squad. One place.</h3><p>Plan the next match, share a clutch moment,<br>or catch up with your teammates.</p><button class="chatAction primary" data-chat-start>Start a conversation</button></div></div></div><div class="chatTyping" id="chatTyping" role="status"></div><button class="chatJumpLatest" id="chatJumpLatest" aria-label="Jump to latest messages" hidden>↓ Latest messages</button></div>
+      <div class="chatComposerWrap"><div class="chatComposeMenu" id="chatComposeMenu" hidden aria-label="Add to conversation"><button id="chatAttachBtn" type="button"><span aria-hidden="true">↗</span><b>Photo or file</b></button><button id="chatEmojiBtn" type="button"><span aria-hidden="true">☺</span><b>Emoji</b></button><button id="chatPlanMatch" type="button" hidden><span aria-hidden="true">▥</span><b>Plan a match<small>Create a group poll</small></b></button></div><input id="chatFile" type="file" accept="image/*,audio/*,video/mp4,application/pdf" hidden><div class="chatEmojiPicker" id="chatEmojiPicker" aria-label="Choose an emoji" hidden><button data-emoji-insert="🔥" aria-label="Fire">🔥</button><button data-emoji-insert="😂" aria-label="Laugh">😂</button><button data-emoji-insert="🎮" aria-label="Gaming">🎮</button><button data-emoji-insert="👍" aria-label="Thumbs up">👍</button><button data-emoji-insert="🏆" aria-label="Trophy">🏆</button><button data-emoji-insert="❤️" aria-label="Heart">❤️</button><button data-emoji-insert="👀" aria-label="Eyes">👀</button><button data-emoji-insert="🙌" aria-label="Celebrate">🙌</button></div>
         <div class="chatReplyPreview" id="chatReplyPreview"><span id="chatReplyText"></span><button class="msgAction" id="chatReplyCancel">✕</button></div>
         <div class="chatComposer">
-          <button class="chatComposeBtn" id="chatAttachBtn" title="Attach">＋</button><input id="chatFile" type="file" accept="image/*,audio/*,video/mp4,application/pdf" hidden>
-          <button class="chatComposeBtn" id="chatMicBtn" title="Voice note">🎤</button>
-          <textarea id="chatInput" rows="1" maxlength="5000" placeholder="Message…"></textarea>
-          <button class="chatSend" id="chatSend">SEND</button>
+          <button class="chatComposeBtn" id="chatMoreBtn" aria-label="Add to conversation" aria-expanded="false" aria-controls="chatComposeMenu" type="button">＋</button>
+          <textarea id="chatInput" aria-label="Message" rows="1" maxlength="5000" placeholder="Message…"></textarea>
+          <button class="chatComposeBtn" id="chatMicBtn" aria-label="Record voice note" title="Record voice note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11v2a6 6 0 0 0 12 0v-2M12 19v3M8 22h8"/></svg></button><button class="chatSend" id="chatSend" aria-label="Send message">SEND</button>
         </div>
-        <div class="chatStatus" id="chatStatus"></div>
+        <div class="chatStatus" id="chatStatus" role="status" aria-live="polite"></div>
       </div>
     </main>
   </div>
@@ -1168,28 +1193,48 @@ button,a,[role="button"],summary{touch-action:manipulation}
 
 <div class="chatOverlay" id="chatCreateOverlay" aria-hidden="true"><div class="chatModal">
   <div class="lab">PWT COMMS</div><h2 id="chatCreateTitle">NEW CHAT</h2>
-  <div id="chatGroupNameWrap" style="display:none"><input id="chatGroupName" maxlength="60" placeholder="Group name"><input id="chatGroupDescription" maxlength="180" placeholder="Group description (optional)"></div>
-  <input id="chatPeopleSearch" placeholder="Search PWT members…" autocomplete="off">
+  <div id="chatGroupNameWrap" style="display:none"><label class="chatField" for="chatGroupName">Group name</label><input id="chatGroupName" maxlength="60" placeholder="e.g. Friday night squad"><label class="chatField" for="chatGroupDescription">Description (optional)</label><input id="chatGroupDescription" maxlength="180" placeholder="What brings this group together?"></div>
+  <label class="chatField" for="chatPeopleSearch">Choose your teammates</label><input id="chatPeopleSearch" placeholder="Search PWT members…" autocomplete="off">
   <div class="chatPeople" id="chatPeopleList"></div>
   <div class="chatModalActions"><button class="chatAction primary" id="chatCreateConfirm">CONTINUE</button><button class="chatAction" id="chatCreateCancel">CANCEL</button></div>
   <div class="chatNotifyNote" id="chatCreateMsg"></div>
 </div></div>
 <div class="chatOverlay" id="chatInfoOverlay" aria-hidden="true"><div class="chatModal"><div class="lab">CONVERSATION</div><h2 id="chatInfoTitle">CHAT INFO</h2><div id="chatInfoBody"></div><div class="chatModalActions"><button class="chatAction" id="chatInfoClose">CLOSE</button></div></div></div>
 <div class="chatOverlay" id="chatForwardOverlay" aria-hidden="true"><div class="chatModal"><div class="lab">FORWARD MESSAGE</div><h2>CHOOSE CHAT</h2><div class="chatPeople" id="chatForwardList"></div><div class="chatModalActions"><button class="chatAction" id="chatForwardClose">CANCEL</button></div></div></div>
-<div class="chatToast" id="chatToast"><b id="chatToastTitle"></b><p id="chatToastBody"></p></div>
+<button class="chatLauncher" data-chat-lobby aria-label="Open Player Lobby">✉ Player Lobby <span id="chatLauncherBadge" class="chatBadge"></span></button>
+<div class="chatOverlay" id="chatNotificationsOverlay" aria-hidden="true"><section class="chatModal" role="dialog" aria-modal="true" aria-labelledby="chatInboxTitle"><div class="chatInboxHeader"><div><div class="lab">STAY IN THE LOOP</div><h2 id="chatInboxTitle">Your inbox</h2></div><button class="chatIconBtn" id="chatNotificationsClose" aria-label="Close notifications">×</button></div><button class="chatAction" id="chatMarkAllRead">Mark notifications read</button><div class="chatNotificationList" id="chatNotificationList"></div><div class="chatPushSettings"><b>Notifications on this device</b><p id="chatPushStatus">In-app alerts are active. Enable device alerts to hear from your squad when PWT is closed.</p><button class="chatAction primary" id="chatDeviceEnable">Enable device alerts</button><button class="chatAction" id="chatDeviceDisable" hidden>Turn off device alerts</button></div></section></div>
+<div class="chatOverlay" id="chatPollOverlay" aria-hidden="true"><section class="chatModal" role="dialog" aria-modal="true" aria-labelledby="chatPollTitle"><div class="lab">GET THE SQUAD TOGETHER</div><h2 id="chatPollTitle">Plan a match</h2><label class="chatField" for="chatPollQuestion">Ask the Lobby</label><input id="chatPollQuestion" maxlength="160" placeholder="When can you play tonight?"><label class="chatField" for="chatPollOption0">Option 1</label><input id="chatPollOption0" maxlength="80" placeholder="Add a time or answer"><label class="chatField" for="chatPollOption1">Option 2</label><input id="chatPollOption1" maxlength="80" placeholder="Add a time or answer"><label class="chatField" for="chatPollOption2">Option 3 (optional)</label><input id="chatPollOption2" maxlength="80" placeholder="Add a time or answer"><label class="chatField" for="chatPollOption3">Option 4 (optional)</label><input id="chatPollOption3" maxlength="80" placeholder="Add a time or answer"><label class="chatField" for="chatPollOption4">Option 5 (optional)</label><input id="chatPollOption4" maxlength="80" placeholder="Add a time or answer"><label class="chatField" for="chatPollOption5">Option 6 (optional)</label><input id="chatPollOption5" maxlength="80" placeholder="Add a time or answer"><p class="chatNotifyNote">One vote per player. Players can change their vote. Names and votes are visible to conversation members.</p><div class="chatModalActions"><button class="chatAction primary" id="chatPollCreate">Post poll</button><button class="chatAction" id="chatPollCancel">Cancel</button></div><p class="chatNotifyNote" id="chatPollCreateMsg" role="status"></p></section></div>
+<div class="chatOverlay" id="chatMuteOverlay" aria-hidden="true"><section class="chatModal" role="dialog" aria-modal="true" aria-labelledby="chatMuteTitle"><div class="lab">YOUR PREFERENCES</div><h2 id="chatMuteTitle">Chat notifications</h2><p class="chatNotifyNote" id="chatMuteName"></p><label class="chatField" for="chatMuteDuration">Notify me about new messages</label><select id="chatMuteDuration"><option value="keep" hidden>Keep current mute</option><option value="off">All messages</option><option value="1">Mute for 1 hour</option><option value="8">Mute for 8 hours</option><option value="24">Mute for 24 hours</option><option value="forever">Mute until I turn it on</option></select><p class="chatNotifyNote">Applies to your profile on all devices. Muted chats still keep their messages and unread count.</p><div class="chatModalActions"><button class="chatAction primary" id="chatMuteSave">Save preference</button><button class="chatAction" id="chatMuteCancel">Cancel</button></div><p id="chatMuteMessage" class="chatNotifyNote" role="status"></p></section></div>
+<div class="chatToast" id="chatToast" role="status" aria-live="polite"><b id="chatToastTitle"></b><p id="chatToastBody"></p><button class="chatAction primary" id="chatToastOpen" hidden>Open conversation →</button></div>
 
 <div class="authOverlay" id="authOverlay" aria-hidden="true">
-  <div class="authCard" role="dialog" aria-modal="true">
-    <div class="lab">PWT ACCOUNT</div><h2>ENTER THE PWT COMMUNITY</h2>
+  <div class="authCard" role="dialog" aria-modal="true" aria-labelledby="authTitle" aria-describedby="authIntro">
+    <div class="lab">PWT GAMING · ACCOUNT</div>
+    <h2 id="authTitle">Welcome back</h2>
+    <p class="authIntro" id="authIntro">Already a member? Log in to your PWT account.</p>
     <div id="authOut">
-      <div class="lab" style="margin-top:10px">PUBG PLAYER / NEW PLAYER</div>
-      <select id="authPlayer"><option value="">Loading roster…</option></select>
-      <input id="authNewName" placeholder="New PUBG name" style="display:none">
-      <input id="authEmail" type="email" autocomplete="email" placeholder="Email">
-      <input id="authPassword" type="password" autocomplete="current-password" placeholder="Password (6+ characters)">
-      <div class="authButtons"><button class="authPrimary" id="signIn">SIGN IN</button><button class="authSecondary" id="signUp">CREATE ACCOUNT</button></div>
-      <div class="authHelpRow"><button class="authHelpBtn" id="forgotPassword" type="button">FORGOT / RESET PASSWORD</button><button class="authHelpBtn" id="resendConfirmation" type="button">RESEND CONFIRMATION</button></div>
-      <div class="authMsg" id="authMsg">Returning users only need email + password. Passwords are case-sensitive. New accounts must confirm their email before signing in.</div>
+      <div class="authModeSwitch" aria-label="Account options">
+        <button type="button" id="authLoginMode" aria-pressed="true">Log In</button>
+        <button type="button" id="authSignupMode" aria-pressed="false">Create Account</button>
+      </div>
+      <form id="authCredentials">
+        <button type="submit" hidden tabindex="-1" aria-hidden="true">Continue</button>
+        <div id="authSignupFields" hidden>
+          <label for="authPlayer">PUBG player name</label>
+          <select id="authPlayer"><option value="">Loading roster…</option></select>
+          <p class="authHint">Choose your tournament name, or select “I'm not on the roster.” A roster entry is not a PWT account.</p>
+          <input id="authNewName" aria-label="New PUBG player name" autocomplete="nickname" placeholder="Enter your PUBG name" style="display:none">
+        </div>
+        <label for="authEmail">Email address</label>
+        <input id="authEmail" type="email" autocomplete="username" placeholder="you@example.com" required>
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+        <p class="authHint" id="authSignupHint" hidden>Use at least 6 characters. We'll email you a confirmation link.</p>
+        <div class="authButtons"><button class="authPrimary" id="signIn" type="button">LOG IN</button><button class="authPrimary" id="signUp" type="button" hidden>CREATE ACCOUNT</button></div>
+      </form>
+      <div class="authHelpRow"><button class="authHelpBtn" id="forgotPassword" type="button">Forgot password?</button><button class="authHelpBtn" id="resendConfirmation" type="button">Resend confirmation email</button></div>
+      <div class="authMsg" id="authMsg" role="status" aria-live="polite"></div>
+      <p class="authSwitchPrompt"><span id="authSwitchText">New to PWT?</span> <button type="button" id="authSwitch">Create an account</button></p>
     </div>
     <div class="authRecovery" id="authRecovery">
       <div class="lab">ACCOUNT RECOVERY</div><h3>SET A NEW PASSWORD</h3>
@@ -1200,7 +1245,7 @@ button,a,[role="button"],summary{touch-action:manipulation}
       <div class="authNote" id="authRecoveryMsg"></div>
     </div>
     <div id="authIn" style="display:none">
-      <div class="signedProfile"><b id="authSignedName"></b><span id="authSignedEmail"></span><br><span class="rolePill" id="authSignedRole"></span></div><button class="authSecondary" id="authGoProfile" style="width:100%">OPEN MY PROFILE</button><button class="authSecondary" id="signOut" style="width:100%;margin-top:8px">SIGN OUT</button>
+      <div class="signedProfile"><b id="authSignedName"></b><span id="authSignedEmail"></span><br><span class="rolePill" id="authSignedRole"></span></div><button class="authPrimary" id="authGoProfile" style="width:100%">OPEN MY PROFILE</button><button class="authSecondary" id="signOut" style="width:100%;margin-top:8px">SIGN OUT</button>
     </div>
     <button class="authSecondary" id="authClose" style="width:100%;margin-top:8px">CLOSE</button>
   </div>
@@ -1234,7 +1279,7 @@ function formatDate(iso){return new Date(iso).toLocaleDateString([],{month:'shor
 function fmtTime(iso){return new Date(iso).toLocaleString([],{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}
 function isAdmin(){return currentProfile?.role==='admin'}
 function requireUser(msg='Sign in first to use this feature.'){if(currentUser)return true;openAuth(msg);return false}
-function navTo(page){$$('.tab,.page').forEach(x=>x.classList.remove('on'));const tab=$(`.tab[data-page="${page}"]`);const pg=$('#'+page);if(tab){tab.classList.add('on');requestAnimationFrame(()=>tab.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}))}if(pg)pg.classList.add('on');window.scrollTo({top:$('.navWrap').offsetTop,behavior:'smooth'});if(page==='profile')renderMyProfile();if(page==='chats'){if(!currentUser)openAuth('Sign in to use private PWT chats.');else initChatSystem()}}
+function navTo(page){document.body.classList.toggle("chatting",page==="chats");$$('.tab,.page').forEach(x=>x.classList.remove('on'));const tab=$(`.tab[data-page="${page}"]`);const pg=$('#'+page);if(tab){tab.classList.add('on');requestAnimationFrame(()=>tab.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}))}if(pg)pg.classList.add('on');window.scrollTo({top:$('.navWrap').offsetTop,behavior:'smooth'});if(page==='profile')renderMyProfile();if(page==='chats'){if(!currentUser)openAuth('Sign in to use private PWT chats.');else{initChatSystem().then(()=>{if(!chatState.selected)openPlayerLobby()});if(chatIsVisible(chatState.selected))markChatRead(chatState.selected).catch(console.error)}}}
 $$('[data-jump]').forEach(x=>x.addEventListener('click',()=>navTo(x.dataset.jump)));$$('.tab').forEach(x=>x.addEventListener('click',()=>navTo(x.dataset.page)));
 $('#viewUntrackedPlayers')?.addEventListener('click',()=>navTo('players'));
 
@@ -1715,24 +1760,47 @@ $('#saveCardStudio')?.addEventListener('click',async()=>{
 $('#openCardStudio')?.addEventListener('click',()=>navTo('profile'));
 
 function renderMyProfile(){if(!currentUser||!currentProfile){$('#profileTab').style.display='none';return}$('#profileTab').style.display='block';$('#myAvatar').src=avatarImageForProfile(currentProfile);$('#myName').innerHTML=esc(currentProfile.display_name)+(currentProfile.avatar_url?' <span class="customPhotoBadge">CUSTOM PHOTO</span>':'');$('#myEmail').textContent=currentUser.email||'';$('#myRole').textContent=(currentProfile.role||'member').toUpperCase();const rp=state.playersRaw.find(p=>p.id===currentProfile.player_id);$('#myRoster').textContent=rp?rp.display_name:'Community only';renderAvatarGrid('#profileAvatarGrid',currentProfile.avatar_key||avatarKeyForProfile(currentProfile));$('#profileCustomAvatarRemove').style.display=currentProfile.avatar_url?'inline-block':'none';renderCardStudio()}
-$('#profileSignOut').addEventListener('click',()=>sb.auth.signOut());
+$('#profileSignOut').addEventListener('click',signOutPwt);
 
 async function loadProfiles(){const {data,error}=await sb.from('profiles').select('id,display_name,role,player_id,avatar_key,avatar_url,card_theme,card_frame,card_pattern,card_accent,featured_title,created_at');if(error)throw error;state.profiles=data||[];if(currentUser)currentProfile=state.profiles.find(p=>p.id===currentUser.id)||null}
 async function loadStats(){const [pr,mr,sr]=await Promise.all([sb.from('players').select('id,display_name,active,avatar_key,created_at').eq('active',true).order('display_name'),sb.from('matches').select('*').order('played_at',{ascending:false}),sb.from('match_player_stats').select('*')]);if(pr.error||mr.error||sr.error)throw pr.error||mr.error||sr.error;state.playersRaw=pr.data||[];state.matchesRaw=mr.data||[];state.statsRaw=sr.data||[];buildDerived()}
 async function loadChallenges(){const {data,error}=await sb.from('challenges').select('*').order('created_at',{ascending:false}).limit(100);if(error)throw error;state.challenges=data||[];renderChallenges()}
 async function loadEverything(){try{setSync('SYNCING LIVE DATA…');await Promise.all([loadProfiles(),loadStats()]);await loadChallenges();renderAll();await Promise.all([loadFeed(),loadCommunity()]);setSync('COMMUNITY LIVE','live')}catch(e){console.error(e);setSync('DATA ERROR');}}
 
-function renderAuthRoster(){const s=$('#authPlayer'),cur=s.value;s.innerHTML='<option value="">Select existing PUBG player</option>'+state.playersRaw.map(p=>`<option value="${p.id}">${esc(p.display_name)}</option>`).join('')+'<option value="__new__">＋ I’M A NEW PLAYER / NOT LISTED</option>';if([...s.options].some(o=>o.value===cur))s.value=cur}
+function renderAuthRoster(){const s=$('#authPlayer'),cur=s.value;s.innerHTML='<option value="">Choose your PUBG name</option>'+state.playersRaw.map(p=>`<option value="${p.id}">${esc(p.display_name)}</option>`).join('')+'<option value="__new__">＋ I’m not on the roster</option>';if([...s.options].some(o=>o.value===cur))s.value=cur}
 $('#authPlayer').addEventListener('change',()=>{$('#authNewName').style.display=$('#authPlayer').value==='__new__'?'block':'none'});
-function openAuth(msg=''){renderAccount();$('#authOverlay').classList.add('show');$('#authOverlay').setAttribute('aria-hidden','false');if(msg)$('#authMsg').textContent=msg}
+let authMode='login';
+function setAuthMode(mode){
+ authMode=mode;
+ const signup=mode==='signup';
+ $('#authSignupFields').hidden=!signup;
+ $('#authSignupHint').hidden=!signup;
+ $('#signUp').hidden=!signup;
+ $('#signIn').hidden=signup;
+ $('#forgotPassword').hidden=signup;
+ $('#authLoginMode').setAttribute('aria-pressed',String(!signup));
+ $('#authSignupMode').setAttribute('aria-pressed',String(signup));
+ $('#authPassword').autocomplete=signup?'new-password':'current-password';
+ $('#authPassword').placeholder=signup?'Create a password (6+ characters)':'Enter your password';
+ $('#authPassword').value='';
+ $('#authSwitchText').textContent=signup?'Already have an account?':'New to PWT?';
+ $('#authSwitch').textContent=signup?'Log in':'Create an account';
+ $('#authMsg').textContent='';
+ renderAccount();
+}
+$('#authLoginMode').addEventListener('click',()=>setAuthMode('login'));
+$('#authSignupMode').addEventListener('click',()=>setAuthMode('signup'));
+$('#authSwitch').addEventListener('click',()=>setAuthMode(authMode==='login'?'signup':'login'));
+$('#authCredentials').addEventListener('submit',e=>{e.preventDefault();$(authMode==='signup'?'#signUp':'#signIn').click()});
+function openAuth(msg=''){setAuthMode('login');renderAccount();$('#authOverlay').classList.add('show');$('#authOverlay').setAttribute('aria-hidden','false');if(msg)$('#authMsg').textContent=msg}
 function closeAuth(){if($('#authRecovery')?.classList.contains('show'))return;$('#authOverlay').classList.remove('show');$('#authOverlay').setAttribute('aria-hidden','true')}
 $('#accountBtn').addEventListener('click',()=>openAuth());$('#authClose').addEventListener('click',closeAuth);$('#authOverlay').addEventListener('click',e=>{if(e.target===$('#authOverlay'))closeAuth()});
-$('#signIn').addEventListener('click',async()=>{const email=$('#authEmail').value.trim().toLowerCase(),password=$('#authPassword').value;if(!email||!password){$('#authMsg').textContent='Enter your email and password.';return}$('#authMsg').textContent='Signing in…';const{error}=await sb.auth.signInWithPassword({email,password});if(error){PwtAudio?.play?.('error');$('#authMsg').textContent=error.code==='invalid_credentials'?'Email/password not accepted. If your email is not confirmed, use RESEND CONFIRMATION. If you are unsure of the password, use FORGOT / RESET PASSWORD.':error.message;return}PwtAudio?.play?.('success');$('#authMsg').textContent='Signed in.'});
+$('#signIn').addEventListener('click',async()=>{const email=$('#authEmail').value.trim().toLowerCase(),password=$('#authPassword').value;if(!$('#authCredentials').reportValidity())return;if(!email||!password){$('#authMsg').textContent='Enter your email and password.';return}$('#authMsg').textContent='Signing in…';const{error}=await sb.auth.signInWithPassword({email,password});if(error){PwtAudio?.play?.('error');$('#authMsg').textContent=error.code==='invalid_credentials'?'Email/password not accepted. If your email is not confirmed, use Resend confirmation email. If you are unsure of the password, use Forgot password?.':error.message;return}PwtAudio?.play?.('success');$('#authMsg').textContent='Signed in.'});
 
 function authEmailValue(){return ($('#authEmail')?.value||'').trim().toLowerCase()}
 function authRateMessage(error){const m=String(error?.message||'');return error?.status===429||/rate limit|security purposes/i.test(m)?'Too many email requests. Wait about a minute, then try once more.':m}
 $('#forgotPassword')?.addEventListener('click',async()=>{
- const email=authEmailValue();if(!email){$('#authMsg').textContent='Enter your account email first, then tap FORGOT / RESET PASSWORD.';return}
+ const email=authEmailValue();if(!email){$('#authMsg').textContent='Enter your account email first, then choose Forgot password?.';return}
  $('#authMsg').textContent='Sending password reset email…';
  const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+'/' });
  if(error){PwtAudio?.play?.('error');$('#authMsg').textContent=authRateMessage(error);return}
@@ -1747,7 +1815,7 @@ $('#resendConfirmation')?.addEventListener('click',async()=>{
 });
 function recoveryPending(){return sessionStorage.getItem('pwt_recovery_pending')==='1'}
 function clearRecoveryPending(){sessionStorage.removeItem('pwt_recovery_pending');try{const u=new URL(window.location.href);u.hash='';u.searchParams.delete('type');history.replaceState({},document.title,u.pathname+u.search)}catch(_){}}
-function showPasswordRecovery(){sessionStorage.setItem('pwt_recovery_pending','1');openAuth();$('#authOut').style.display='none';$('#authIn').style.display='none';$('#authRecovery').classList.add('show');$('#authClose').style.display='none';$('#authRecoveryMsg').textContent='Recovery session verified. Enter and save a new password to continue.';setTimeout(()=>$('#authNewPassword')?.focus(),80)}
+function showPasswordRecovery(){sessionStorage.setItem('pwt_recovery_pending','1');openAuth();$('#authOut').style.display='none';$('#authIn').style.display='none';$('#authRecovery').classList.add('show');renderAccount();$('#authClose').style.display='none';$('#authRecoveryMsg').textContent='Recovery session verified. Enter and save a new password to continue.';setTimeout(()=>$('#authNewPassword')?.focus(),80)}
 function hidePasswordRecovery(){ $('#authRecovery').classList.remove('show'); $('#authRecoveryMsg').textContent=''; $('#authClose').style.display='block'; if(!currentUser)$('#authOut').style.display='block'; }
 $('#cancelRecovery')?.addEventListener('click',async()=>{clearRecoveryPending();hidePasswordRecovery();await sb.auth.signOut();currentUser=null;currentProfile=null;renderAccount();openAuth('Password reset cancelled. Sign in normally or request another reset link.');});
 $('#saveNewPassword')?.addEventListener('click',async()=>{
@@ -1761,9 +1829,9 @@ $('#saveNewPassword')?.addEventListener('click',async()=>{
  clearRecoveryPending();$('#authNewPassword').value='';$('#authNewPasswordConfirm').value='';setTimeout(()=>{hidePasswordRecovery();renderAccount()},650);
 });
 
-$('#signUp').addEventListener('click',async()=>{const val=$('#authPlayer').value,email=$('#authEmail').value.trim().toLowerCase(),password=$('#authPassword').value;let display_name='',player_id=null;if(val==='__new__')display_name=$('#authNewName').value.trim();else if(val){const p=state.playersRaw.find(x=>x.id===val);display_name=p?.display_name||'';player_id=val}if(!display_name||!email||password.length<6){$('#authMsg').textContent='Choose your PUBG name (or add a new one), enter email, and use a password of at least 6 characters.';return}const avatar_key=player_id?avatarKeyForPlayer(state.playersRaw.find(p=>p.id===player_id)):AVATARS[Math.abs(hashString(email))%AVATARS.length];$('#authMsg').textContent='Creating account…';const{data,error}=await sb.auth.signUp({email,password,options:{data:{display_name,player_id,avatar_key},emailRedirectTo:window.location.origin}});if(error){$('#authMsg').textContent=error.message;return}$('#authMsg').textContent=data.session?'Account created and signed in.':'Account created. Confirm your email, then return and sign in.'});
-$('#signOut').addEventListener('click',()=>sb.auth.signOut());$('#authGoProfile').addEventListener('click',()=>{closeAuth();navTo('profile')});
-function renderAccount(){const signed=!!currentUser,recovering=$('#authRecovery')?.classList.contains('show');$('#authOut').style.display=!recovering&&!signed?'block':'none';$('#authIn').style.display=!recovering&&signed?'block':'none';const btn=$('#accountBtn');if(signed){const key=avatarKeyForProfile(currentProfile);btn.innerHTML=`<img src="${avatarImageForProfile(currentProfile)}"><span>${esc(currentProfile?.display_name||'PROFILE')}</span>`;$('#authSignedName').textContent=currentProfile?.display_name||'PWT Player';$('#authSignedEmail').textContent=currentUser.email||'';$('#authSignedRole').textContent=(currentProfile?.role||'member').toUpperCase()}else btn.innerHTML='<span>SIGN IN</span>'}
+$('#signUp').addEventListener('click',async()=>{const val=$('#authPlayer').value,email=$('#authEmail').value.trim().toLowerCase(),password=$('#authPassword').value;let display_name='',player_id=null;if(!$('#authCredentials').reportValidity())return;if(val==='__new__')display_name=$('#authNewName').value.trim();else if(val){const p=state.playersRaw.find(x=>x.id===val);display_name=p?.display_name||'';player_id=val}if(!display_name||!email||password.length<6){$('#authMsg').textContent='Choose your PUBG name (or add a new one), enter email, and use a password of at least 6 characters.';return}const avatar_key=player_id?avatarKeyForPlayer(state.playersRaw.find(p=>p.id===player_id)):AVATARS[Math.abs(hashString(email))%AVATARS.length];$('#authMsg').textContent='Creating account…';const{data,error}=await sb.auth.signUp({email,password,options:{data:{display_name,player_id,avatar_key},emailRedirectTo:window.location.origin}});if(error){$('#authMsg').textContent=error.message;return}$('#authMsg').textContent=data.session?'Account created and signed in.':'Check your email to finish creating your account. Open the confirmation link, then choose Log In.'});
+$('#signOut').addEventListener('click',signOutPwt);$('#authGoProfile').addEventListener('click',()=>{closeAuth();navTo('profile')});
+function renderAccount(){const signed=!!currentUser,recovering=$('#authRecovery')?.classList.contains('show');$('#authOut').style.display=!recovering&&!signed?'block':'none';$('#authIn').style.display=!recovering&&signed?'block':'none';$('#authTitle').textContent=recovering?'Reset your password':signed?'Your account':authMode==='signup'?'Join PWT Gaming':'Welcome back';$('#authIntro').textContent=recovering?'Choose a new password to secure your account.':signed?'You’re logged in. Manage your player profile below.':authMode==='signup'?'New here? Create your account to join the community.':'Already a member? Log in to your PWT account.';const btn=$('#accountBtn');if(signed){const key=avatarKeyForProfile(currentProfile);btn.innerHTML=`<img src="${avatarImageForProfile(currentProfile)}"><span>${esc(currentProfile?.display_name||'PROFILE')}</span>`;$('#authSignedName').textContent=currentProfile?.display_name||'PWT Player';$('#authSignedEmail').textContent=currentUser.email||'';$('#authSignedRole').textContent=(currentProfile?.role||'member').toUpperCase()}else btn.innerHTML='<img src="/assets/account-person.svg" alt="" class="accountAvatar"><span>Log in</span>';btn.setAttribute('aria-label',signed?'Open your account':'Log in or create an account');btn.title=signed?'Your account':'Log in / Sign up';const chatBtn=$('#chatAccountBtn');if(chatBtn){chatBtn.innerHTML=btn.innerHTML;chatBtn.setAttribute('aria-label',btn.getAttribute('aria-label'))}}
 function renderAdminVisibility(){const a=isAdmin();$$('.adminTab').forEach(x=>x.style.display=a?'block':'none');$('#feedComposer').style.display=a?'block':'none';if(a&&$('#admRows').children.length===0){for(let i=0;i<12;i++)addAdminRow(i<6?'1':'2')}}
 
 async function loadFeed(){const [posts,react,comments]=await Promise.all([sb.from('feed_posts').select('*').order('created_at',{ascending:false}).limit(40),sb.from('reactions').select('*').eq('target_type','post').eq('reaction_type','like'),sb.from('comments').select('*').eq('target_type','post').order('created_at',{ascending:true})]);if(posts.error)throw posts.error;state.feed=posts.data||[];const names=Object.fromEntries(state.profiles.map(p=>[p.id,p.display_name]));$('#feedPosts').innerHTML=state.feed.length?state.feed.map(p=>{const rs=(react.data||[]).filter(r=>r.target_id===p.id),cs=(comments.data||[]).filter(c=>c.target_id===p.id),liked=currentUser&&rs.some(r=>r.user_id===currentUser.id),id=ytId(p.url||'');return`<article class="card post" data-post="${p.id}">${p.post_type==='youtube'&&id?`<iframe src="https://www.youtube-nocookie.com/embed/${id}" loading="lazy" allowfullscreen title="${esc(p.title)}"></iframe>`:''}<div class="postBody"><div class="postMeta">${esc(p.post_type.toUpperCase())} · ${esc(names[p.author_id]||'PWT ADMIN')} · ${fmtTime(p.created_at)}</div><h3>${esc(p.title)}</h3><p>${esc(p.body||'')}</p>${p.url?`<a class="linkCard" href="${esc(p.url)}" target="_blank" rel="noopener">↗ OPEN ${p.post_type==='youtube'?'YOUTUBE':'LINK'}</a>`:''}<div class="socialActions"><button class="socialBtn ${liked?'active':''}" data-post-like="${p.id}">♥ LIKE <span>${rs.length}</span></button><button class="socialBtn" data-post-comment-toggle="${p.id}">💬 COMMENT <span>${cs.length}</span></button></div><div class="commentBox" data-post-box="${p.id}"><input placeholder="Add a comment…"><button class="socialBtn" data-post-comment="${p.id}">POST</button></div><div class="comments">${cs.map(c=>commentHtml({...c,name:names[c.author_id]||'PWT Player'})).join('')}</div></div></article>`}).join(''):'<div class="empty">No feed posts yet.</div>'}
@@ -1995,7 +2063,7 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.se
 // Persistent data = Supabase tables. Live typing/presence = private Realtime.
 // ─────────────────────────────────────────────────────────────────────────────
 const CHAT_VAPID_PUBLIC='BHVZugNqGi6-b-uNhcqClQYeml0E6UiObdVJKaRTKB1Ws1HJti1C418OSfkFn6iRJHfqWYdf17dR8PQ86dvcKlM';
-let chatState={ready:false,loading:false,filter:'all',memberships:[],conversations:[],members:[],memberStates:[],notifications:[],latest:[],selected:null,messages:[],reactions:[],stars:[],threadStates:[],channel:null,globalChannel:null,presence:{},replyTo:null,forwardMessage:null,dialogMode:null,dialogConversation:null,attachmentUrls:new Map(),mediaRecorder:null,mediaStream:null,recordChunks:[],typingTimer:null,lastTypingSent:0};
+let chatState={ready:false,loading:false,filter:'all',memberships:[],conversations:[],members:[],memberStates:[],notifications:[],latest:[],selected:null,messages:[],reactions:[],stars:[],threadStates:[],channel:null,globalChannel:null,presence:{},replyTo:null,forwardMessage:null,dialogMode:null,dialogConversation:null,attachmentUrls:new Map(),mediaRecorder:null,mediaStream:null,recordChunks:[],typingTimer:null,lastTypingSent:0,sending:false,hasOlder:false,homeError:false,peoplePicks:new Set(),polls:[],pollOptions:[],pollVotes:[],lobbyId:null};
 
 function chatProfile(id){return state.profiles.find(p=>p.id===id)}
 function chatMeState(id){return chatState.memberStates.find(x=>x.conversation_id===id&&x.user_id===currentUser?.id)}
@@ -2007,18 +2075,17 @@ function chatAvatar(conv){if(!conv)return'assets/pwt_logo.svg';if(conv.kind==='g
 function chatLast(convId){return chatState.latest.find(x=>x.conversation_id===convId)}
 function chatUnread(convId){return chatState.notifications.filter(n=>n.conversation_id===convId&&!n.read_at).length}
 function chatFmt(iso){if(!iso)return'';const d=new Date(iso),today=new Date();if(d.toDateString()===today.toDateString())return d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});return d.toLocaleDateString([],{month:'short',day:'numeric'})}
-function chatToast(title,body){$('#chatToastTitle').textContent=title;$('#chatToastBody').textContent=body||'';$('#chatToast').classList.add('show');setTimeout(()=>$('#chatToast').classList.remove('show'),3300)}
+function chatToast(title,body,conversationId=null){clearTimeout(chatState.toastTimer);$('#chatToastTitle').textContent=title;$('#chatToastBody').textContent=body||'';$('#chatToastOpen').hidden=!conversationId;$('#chatToastOpen').dataset.conversation=conversationId||'';$('#chatToast').classList.add('show');chatState.toastTimer=setTimeout(()=>$('#chatToast').classList.remove('show'),6000)}
 function chatSafeFileName(n){return String(n||'file').replace(/[^a-zA-Z0-9._-]+/g,'_').slice(-90)}
-function chatOpenOverlay(id){$(id).classList.add('show');$(id).setAttribute('aria-hidden','false')}
-function chatCloseOverlay(id){$(id).classList.remove('show');$(id).setAttribute('aria-hidden','true')}
-function chatSetBadge(){const n=chatState.notifications.filter(n=>!n.read_at).length;$('#chatBadge').textContent=n?String(n):''}
-
+function chatOpenOverlay(id){chatState.overlayFocus=document.activeElement;$(id).classList.add('show');$(id).setAttribute('aria-hidden','false');$(id).querySelector('input,button')?.focus()}
+function chatCloseOverlay(id){const wasOpen=$(id).classList.contains('show');$(id).classList.remove('show');$(id).setAttribute('aria-hidden','true');if(wasOpen)chatState.overlayFocus?.focus?.()}
+function chatSetBadge(){const n=currentUser?chatState.notifications.filter(n=>!n.read_at).length:0;['chatBadge','chatHomeBadge','chatLauncherBadge','chatInboxBadge'].forEach(id=>$('#'+id).textContent=n?String(n):'');document.title='PWT Gaming';renderChatHome();renderChatNotifications()}
 async function loadChatHome(){
  if(!currentUser){chatState.ready=false;$('#chatSignedOutNote').style.display='block';$('#chatList').innerHTML='<div class="empty">Sign in to load private chats.</div>';chatSetBadge();return}
- $('#chatSignedOutNote').style.display='none';
- const {data:mine,error:memErr}=await sb.from('chat_members').select('*').eq('user_id',currentUser.id);if(memErr)throw memErr;
+ $('#chatSignedOutNote').style.display='none';const loadingUserId=currentUser.id;
+ const {data:mine,error:memErr}=await sb.from('chat_members').select('*').eq('user_id',currentUser.id);if(memErr)throw memErr;if(currentUser?.id!==loadingUserId)return;
  const ids=(mine||[]).map(x=>x.conversation_id);chatState.memberships=mine||[];
- if(!ids.length){chatState.conversations=[];chatState.members=[];chatState.memberStates=[];chatState.notifications=[];renderChatList();return}
+ if(!ids.length){if(chatState.selected)clearChatThread();chatState.conversations=[];chatState.members=[];chatState.memberStates=[];chatState.notifications=[];chatState.latest=[];chatState.ready=true;chatState.homeError=false;if(chatState.selected&&!chatConversation(chatState.selected))clearChatThread();renderChatList();chatSetBadge();return}
  const [convRes,memberRes,stateRes,noteRes,msgRes]=await Promise.all([
   sb.from('chat_conversations').select('*').in('id',ids),
   sb.from('chat_members').select('*').in('conversation_id',ids),
@@ -2026,74 +2093,90 @@ async function loadChatHome(){
   sb.from('chat_notifications').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(1000),
   sb.from('chat_messages').select('id,conversation_id,sender_id,body,message_type,attachment_name,deleted_at,created_at').in('conversation_id',ids).order('created_at',{ascending:false}).limit(500)
  ]);
- const err=convRes.error||memberRes.error||stateRes.error||noteRes.error||msgRes.error;if(err)throw err;
+ const err=convRes.error||memberRes.error||stateRes.error||noteRes.error||msgRes.error;if(err)throw err;if(currentUser?.id!==loadingUserId)return;
  chatState.conversations=convRes.data||[];chatState.members=memberRes.data||[];chatState.memberStates=stateRes.data||[];chatState.notifications=noteRes.data||[];
  const seen=new Set();chatState.latest=[];(msgRes.data||[]).forEach(m=>{if(!seen.has(m.conversation_id)){seen.add(m.conversation_id);chatState.latest.push(m)}});
- chatState.ready=true;renderChatList();chatSetBadge();
+ chatState.ready=true;chatState.homeError=false;if(chatState.selected&&!chatConversation(chatState.selected))clearChatThread();renderChatList();chatSetBadge();
 }
 function renderChatList(){
  const box=$('#chatList');if(!currentUser){box.innerHTML='<div class="empty">Sign in to load private chats.</div>';return}
  const q=($('#chatSearch').value||'').trim().toLowerCase();let list=[...chatState.conversations];
- list=list.filter(c=>{const st=chatMeState(c.id),un=chatUnread(c.id),name=chatTitle(c).toLowerCase();if(q&&!name.includes(q))return false;if(chatState.filter==='archived')return !!st?.archived;if(chatState.filter==='unread')return un>0&&!st?.archived;return !st?.archived});
+ list=list.filter(c=>{const st=chatMeState(c.id),un=chatUnread(c.id),name=chatTitle(c).toLowerCase();if(q&&!name.includes(q))return false;if(chatState.filter==='archived')return !!st?.archived;if(chatState.filter==='unread')return un>0&&!st?.archived;if(chatState.filter==='groups')return c.kind==='group'&&!st?.archived;return !st?.archived});
  list.sort((a,b)=>Number(!!chatMeState(b.id)?.pinned)-Number(!!chatMeState(a.id)?.pinned)||new Date(b.last_message_at||b.created_at)-new Date(a.last_message_at||a.created_at));
- if(!list.length){box.innerHTML='<div class="empty">No conversations here yet.</div>';return}
- box.innerHTML=list.map(c=>{const l=chatLast(c.id),un=chatUnread(c.id),st=chatMeState(c.id),sender=l?chatProfile(l.sender_id):null;let preview='No messages yet';if(l){preview=l.deleted_at?'Message deleted':l.message_type==='voice'?'🎤 Voice message':l.attachment_name?'📎 '+l.attachment_name:(l.body||'New message');if(c.kind==='group'&&sender)preview=sender.display_name+': '+preview}return `<div class="chatListItem ${chatState.selected===c.id?'active':''}" data-chat-id="${c.id}"><img class="chatListAvatar" src="${chatAvatar(c)}"><div class="chatListText"><b>${esc(chatTitle(c))}${c.is_official?'<span class="chatOfficial">OFFICIAL</span>':''}</b><p>${esc(preview)}</p></div><div class="chatListMeta"><time>${chatFmt(l?.created_at||c.last_message_at||c.created_at)}</time>${st?.pinned?'<span class="chatPin">⌖</span>':''}${un?`<span class="chatUnread">${un}</span>`:''}</div></div>`}).join('');
- box.querySelectorAll('[data-chat-id]').forEach(el=>el.onclick=()=>openChatConversation(el.dataset.chatId));
+ if(!list.length){box.innerHTML=`<div class="chatWelcome"><b>${q?'No matching conversations':chatState.filter==='unread'?'All caught up':chatState.filter==='groups'?'Find your squad':'No conversations here yet'}</b>${q?'Try another player or group name.':'Start a message or create a group with your teammates.'}<br><button class="chatAction primary" data-chat-start>New message</button></div>`;return}
+ box.innerHTML=list.map(c=>{const l=chatLast(c.id),un=chatUnread(c.id),st=chatMeState(c.id),sender=l?chatProfile(l.sender_id):null;let preview='No messages yet';if(l){preview=l.deleted_at?'Message deleted':l.message_type==='voice'?'🎤 Voice message':l.attachment_name?'📎 '+l.attachment_name:(l.body||'New message');if(c.kind==='group'&&sender)preview=sender.display_name+': '+preview}return `<button class="chatListItem ${chatState.selected===c.id?'active':''}" data-chat-id="${c.id}" aria-pressed="${chatState.selected===c.id}"><img class="chatListAvatar" src="${chatAvatar(c)}"><div class="chatListText"><b>${esc(chatTitle(c))}${c.is_official?'<span class="chatOfficial">OFFICIAL</span>':''}</b><p>${esc(preview)}</p></div><div class="chatListMeta"><time>${chatFmt(l?.created_at||c.last_message_at||c.created_at)}</time>${st?.pinned?'<span class="chatPin">⌖</span>':''}${un?`<span class="chatUnread">${un}</span>`:''}</div></button>`}).join('');
+ box.querySelectorAll('[data-chat-id]').forEach(el=>el.onclick=()=>openChatConversation(el.dataset.chatId).catch(e=>chatToast('Could not open conversation',e.message)));
 }
 async function initChatSystem(){
  if(!currentUser){resetChatSystem();return}
  if(chatState.loading)return;chatState.loading=true;
- try{await loadChatHome();initChatGlobalRealtime();updateChatPushButton();const q=new URLSearchParams(location.search).get('chat');if(q&&chatConversation(q)){history.replaceState({},document.title,location.pathname);$$('.tab,.page').forEach(x=>x.classList.remove('on'));$('#chatTab')?.classList.add('on');$('#chats')?.classList.add('on');await openChatConversation(q)}}catch(e){console.error('PWT chat init',e);$('#chatStatus').textContent=e.message||'Chat could not load.'}finally{chatState.loading=false}
+ try{await loadChatHome();initChatGlobalRealtime();updateChatPushButton();const q=new URLSearchParams(location.search).get('chat');if(q&&chatConversation(q)){history.replaceState({},document.title,location.pathname);$$('.tab,.page').forEach(x=>x.classList.remove('on'));$('#chatTab')?.classList.add('on');$('#chats')?.classList.add('on');document.body.classList.add('chatting');await openChatConversation(q)}}catch(e){console.error('PWT chat init',e);chatState.homeError=true;$('#chatList').innerHTML='<div class="chatWelcome"><b>Chats couldn’t load</b>Check your connection and use Refresh to try again.</div>';renderChatHome();$('#chatStatus').textContent=e.message||'Chat could not load.'}finally{chatState.loading=false}
 }
-function resetChatSystem(){if(chatState.channel)sb.removeChannel(chatState.channel);if(chatState.globalChannel)sb.removeChannel(chatState.globalChannel);chatState={...chatState,ready:false,memberships:[],conversations:[],members:[],memberStates:[],notifications:[],latest:[],selected:null,messages:[],reactions:[],stars:[],threadStates:[],channel:null,globalChannel:null,presence:{}};renderChatList();chatSetBadge()}
+function resetChatSystem(){chatState.polls=[];chatState.pollOptions=[];chatState.pollVotes=[];chatState.lobbyId=null;clearChatThread();chatState.attachmentUrls.clear();if(chatState.channel)sb.removeChannel(chatState.channel);if(chatState.globalChannel)sb.removeChannel(chatState.globalChannel);chatState={...chatState,ready:false,memberships:[],conversations:[],members:[],memberStates:[],notifications:[],latest:[],selected:null,messages:[],reactions:[],stars:[],threadStates:[],channel:null,globalChannel:null,presence:{}};renderChatList();chatSetBadge()}
 function initChatGlobalRealtime(){if(!currentUser)return;if(chatState.globalChannel)sb.removeChannel(chatState.globalChannel);chatState.globalChannel=sb.channel('pwt-chat-global-'+currentUser.id)
- .on('postgres_changes',{event:'INSERT',schema:'public',table:'chat_notifications',filter:`user_id=eq.${currentUser.id}`},async payload=>{const n=payload.new;if(chatState.selected===n.conversation_id){await markChatRead(n.conversation_id)}else{chatState.notifications.unshift(n);chatSetBadge();renderChatList();chatToast(n.title,n.body)}})
+ .on('postgres_changes',{event:'INSERT',schema:'public',table:'chat_notifications',filter:`user_id=eq.${currentUser.id}`},payload=>receiveChatNotification(payload.new).catch(console.error))
+ .on('postgres_changes',{event:'UPDATE',schema:'public',table:'chat_notifications',filter:`user_id=eq.${currentUser.id}`},payload=>{const i=chatState.notifications.findIndex(n=>n.id===payload.new.id);if(i>=0)chatState.notifications[i]=payload.new;chatSetBadge();renderChatList()})
+ .on('postgres_changes',{event:'*',schema:'public',table:'chat_member_state',filter:`user_id=eq.${currentUser.id}`},()=>loadChatHome().catch(console.error))
  .on('postgres_changes',{event:'*',schema:'public',table:'chat_conversations'},()=>loadChatHome().catch(console.error))
  .on('postgres_changes',{event:'*',schema:'public',table:'chat_members'},()=>loadChatHome().catch(console.error))
  .subscribe();}
 
 async function openChatConversation(id){
  if(!currentUser)return openAuth('Sign in to open PWT chats.');const conv=chatConversation(id);if(!conv)return;
- chatState.selected=id;chatState.replyTo=null;$('#chatShell').classList.add('threadOpen');$('#chatThreadAvatar').src=chatAvatar(conv);$('#chatThreadName').textContent=chatTitle(conv);$('#chatPresenceText').textContent=conv.kind==='group'?`${chatMembers(id).length} members`:'Connecting…';renderChatList();renderReplyPreview();
- await Promise.all([loadChatThread(id),markChatRead(id)]);subscribeChatThread(id);setTimeout(()=>{const m=$('#chatMessages');m.scrollTop=m.scrollHeight},40);
+ showLobbyMode(id===playerLobby()?.id);saveChatDraft();cancelChatRecording();closeChatComposeMenu();chatState.selected=id;chatState.replyTo=null;chatState.hasOlder=false;$('#chatStarredBtn').classList.remove('on');$('#chatStarredBtn').setAttribute('aria-pressed','false');$('#chatThreadQuery').value='';$('#chatThreadSearchBar').hidden=true;$('#chatEmojiPicker').hidden=true;$('#chatMessages').innerHTML='<div class="chatWelcome">Loading messages…</div>';restoreChatDraft(id);updateChatComposer();$('#chatStatus').textContent='';$('#chatShell').classList.add('threadOpen');$('#chatThreadAvatar').src=chatAvatar(conv);$('#chatThreadName').textContent=chatTitle(conv);$('#chatPresenceText').textContent=conv.kind==='group'?`${chatMembers(id).length} members`:'Connecting…';renderChatList();renderReplyPreview();
+ await loadChatThread(id);if(chatState.selected!==id)return;await markChatRead(id);subscribeChatThread(id);jumpChatLatest();
 }
 async function loadChatThread(id){
- const [mr,rr,sr,starR]=await Promise.all([
-  sb.from('chat_messages').select('*').eq('conversation_id',id).order('created_at',{ascending:true}).limit(250),
-  sb.from('chat_message_reactions').select('*').in('message_id',(chatState.messages.filter(m=>m.conversation_id===id).map(m=>m.id).length?chatState.messages.filter(m=>m.conversation_id===id).map(m=>m.id):['00000000-0000-0000-0000-000000000000'])),
+ const userId=currentUser?.id;if(!userId)return;
+ const box=$('#chatMessages'),nearBottom=box.scrollHeight-box.scrollTop-box.clientHeight<180,top=box.scrollTop;
+ const previous=chatState.messages.filter(m=>m.conversation_id===id);
+ const [mr,sr,starR,hiddenR]=await Promise.all([
+  sb.from('chat_messages').select('*').eq('conversation_id',id).order('created_at',{ascending:false}).limit(100),
   sb.from('chat_member_state').select('*').eq('conversation_id',id),
-  sb.from('chat_starred_messages').select('*').eq('user_id',currentUser.id)
+  sb.from('chat_starred_messages').select('*').eq('user_id',userId),
+  sb.from('chat_hidden_messages').select('message_id').eq('user_id',userId)
  ]);
- if(mr.error)throw mr.error;chatState.messages=mr.data||[];
- const ids=chatState.messages.map(m=>m.id);
- if(ids.length){const r=await sb.from('chat_message_reactions').select('*').in('message_id',ids);chatState.reactions=r.data||[]}else chatState.reactions=[];
- chatState.threadStates=sr.data||[];chatState.stars=(starR.data||[]).filter(x=>ids.includes(x.message_id));
- await hydrateChatAttachments(chatState.messages);renderChatThread();
+ const error=mr.error||sr.error||starR.error||hiddenR.error;if(error)throw error;
+ if(currentUser?.id!==userId||chatState.selected!==id)return;
+ const latest=(mr.data||[]).reverse(),hidden=new Set((hiddenR.data||[]).map(r=>r.message_id));
+ const older=latest.length===100?previous.filter(m=>m.created_at<latest[0].created_at):[];
+ const messages=[...older,...latest].filter(m=>!hidden.has(m.id)),ids=messages.map(m=>m.id);
+ const reactions=ids.length?await sb.from('chat_message_reactions').select('*').in('message_id',ids):{data:[]};
+ await Promise.all([hydrateChatAttachments(messages),loadChatPolls(id)]);
+ if(currentUser?.id!==userId||chatState.selected!==id)return;
+ chatState.messages=messages;chatState.hasOlder=older.length?chatState.hasOlder:latest.length===100;chatState.reactions=reactions.data||[];chatState.threadStates=sr.data||[];chatState.stars=starR.data||[];renderChatThread();
+ if(nearBottom)jumpChatLatest();else{box.scrollTop=top;$('#chatJumpLatest').hidden=false}
 }
+
 async function hydrateChatAttachments(msgs){const paths=[...new Set(msgs.map(m=>m.attachment_path).filter(Boolean).filter(p=>!chatState.attachmentUrls.has(p)))];if(!paths.length)return;const {data}=await sb.storage.from('pwt-chat').createSignedUrls(paths,3600);(data||[]).forEach(x=>{if(x.signedUrl)chatState.attachmentUrls.set(x.path,x.signedUrl)})}
 function renderChatThread(){
  const box=$('#chatMessages'),conv=chatConversation(chatState.selected);if(!conv){box.innerHTML='<div class="chatEmpty">Select a chat.</div>';return}
- const starOnly=$('#chatStarredBtn').classList.contains('on');let msgs=starOnly?chatState.messages.filter(m=>chatState.stars.some(s=>s.message_id===m.id)):chatState.messages;
- if(!msgs.length){box.innerHTML=`<div class="chatEmpty"><div><h3>${starOnly?'NO STARRED MESSAGES':'START THE CONVERSATION'}</h3><p>${starOnly?'Star important messages to find them here.':'Messages are private to members of this conversation.'}</p></div></div>`;return}
- let lastDay='';let html='';for(const m of msgs){const d=new Date(m.created_at).toLocaleDateString([], {month:'short',day:'numeric',year:'numeric'});if(d!==lastDay){html+=`<div class="chatDay"><span>${d}</span></div>`;lastDay=d}html+=chatMessageHtml(m)}box.innerHTML=html;
+ const starOnly=$('#chatStarredBtn').classList.contains('on'),query=$('#chatThreadQuery').value.trim().toLowerCase();let msgs=starOnly?chatState.messages.filter(m=>chatState.stars.some(s=>s.message_id===m.id)):chatState.messages;
+ if(query)msgs=msgs.filter(m=>(m.body||m.attachment_name||'').toLowerCase().includes(query));
+ if(!msgs.length){box.innerHTML=`<div class="chatEmpty"><div><h3>${query?'No matching messages':starOnly?'No starred messages loaded':'Say hello to your squad'}</h3><p>${starOnly?'Star important messages to find them here.':'Messages are private to members of this conversation.'}</p></div></div>`;return}
+ let lastDay='';let html=chatState.hasOlder?'<button class="chatAction chatLoadOlder" id="chatLoadOlder">Load older messages</button>':'';for(const m of msgs){const d=new Date(m.created_at).toLocaleDateString([], {month:'short',day:'numeric',year:'numeric'});if(d!==lastDay){html+=`<div class="chatDay"><span>${d}</span></div>`;lastDay=d}html+=chatMessageHtml(m)}box.innerHTML=html;
+ $('#chatLoadOlder')?.addEventListener('click',loadOlderChatMessages);
  box.querySelectorAll('[data-chat-action]').forEach(b=>b.onclick=()=>handleMessageAction(b.dataset.chatAction,b.dataset.message,b.dataset.emoji));
 }
 function chatMessageHtml(m){
  const mine=m.sender_id===currentUser.id,sender=chatProfile(m.sender_id),reply=m.reply_to?chatState.messages.find(x=>x.id===m.reply_to):null;const reacts=chatState.reactions.filter(r=>r.message_id===m.id);const grouped={};reacts.forEach(r=>(grouped[r.emoji]??=[]).push(r));const readCount=chatState.threadStates.filter(st=>st.user_id!==m.sender_id&&st.last_read_at&&new Date(st.last_read_at)>=new Date(m.created_at)).length;const isStar=chatState.stars.some(s=>s.message_id===m.id);
- let content='';if(m.deleted_at)content='<div class="msgBody msgDeleted">🚫 This message was deleted.</div>';else{if(reply){const rp=chatProfile(reply.sender_id);content+=`<div class="msgReply"><b>${esc(rp?.display_name||'PWT Player')}</b> · ${esc((reply.body||reply.attachment_name||reply.message_type).slice(0,90))}</div>`}if(m.body)content+=`<div class="msgBody">${esc(m.body)}</div>`;if(m.attachment_path)content+=chatAttachmentHtml(m)}
+ let content='';if(m.deleted_at)content='<div class="msgBody msgDeleted">🚫 This message was deleted.</div>';else{if(reply){const rp=chatProfile(reply.sender_id);content+=`<div class="msgReply"><b>${esc(rp?.display_name||'PWT Player')}</b> · ${esc((reply.body||reply.attachment_name||reply.message_type).slice(0,90))}</div>`}if(m.metadata?.pwt_poll_id)content+=chatPollHtml(m.metadata.pwt_poll_id);else if(m.body)content+=`<div class="msgBody">${esc(m.body)}</div>`;if(m.attachment_path)content+=chatAttachmentHtml(m)}
  const reactHtml=Object.entries(grouped).map(([e,arr])=>`<button class="reactionChip ${arr.some(r=>r.user_id===currentUser.id)?'mineReaction':''}" data-chat-action="reaction" data-message="${m.id}" data-emoji="${esc(e)}">${e} ${arr.length}</button>`).join('');
- const actions=m.deleted_at?'':`<div class="msgActions"><button class="msgAction" data-chat-action="reply" data-message="${m.id}">↩ Reply</button><button class="msgAction" data-chat-action="react" data-message="${m.id}">♡ React</button><button class="msgAction" data-chat-action="star" data-message="${m.id}">${isStar?'★ Unstar':'☆ Star'}</button><button class="msgAction" data-chat-action="forward" data-message="${m.id}">↗ Forward</button><button class="msgAction" data-chat-action="hide" data-message="${m.id}">Hide</button>${mine?`<button class="msgAction" data-chat-action="edit" data-message="${m.id}">✎ Edit</button><button class="msgAction" data-chat-action="delete" data-message="${m.id}">Delete</button>`:''}</div>`;
- return `<div class="msgRow ${mine?'mine':''}"><img class="msgAvatar" src="${sender?avatarImageForProfile(sender):'assets/pwt_logo.svg'}"><div class="msgBubble">${!mine&&chatConversation(m.conversation_id)?.kind==='group'?`<div class="msgSender">${esc(sender?.display_name||'PWT Player')}</div>`:''}${content}<div class="msgMeta">${m.edited_at?'edited · ':''}${new Date(m.created_at).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}${mine?` <span class="msgTicks ${readCount?'read':''}">✓${readCount?'✓':''}</span>`:''}</div>${reactHtml?`<div class="msgReactions">${reactHtml}</div>`:''}${actions}</div></div>`
+ const actions=m.deleted_at?'':`<details class="msgMenu"><summary aria-label="Message actions">•••</summary><div class="msgActions"><button class="msgAction" data-chat-action="reply" data-message="${m.id}">↩ Reply</button><button class="msgAction" aria-label="React fire" data-chat-action="reaction" data-message="${m.id}" data-emoji="🔥">🔥</button><button class="msgAction" aria-label="React thumbs up" data-chat-action="reaction" data-message="${m.id}" data-emoji="👍">👍</button><button class="msgAction" aria-label="React laugh" data-chat-action="reaction" data-message="${m.id}" data-emoji="😂">😂</button><button class="msgAction" aria-label="React heart" data-chat-action="reaction" data-message="${m.id}" data-emoji="❤️">❤️</button><button class="msgAction" data-chat-action="star" data-message="${m.id}">${isStar?'★ Unstar':'☆ Star'}</button><button class="msgAction" data-chat-action="forward" data-message="${m.id}">↗ Forward</button><button class="msgAction" data-chat-action="hide" data-message="${m.id}">Hide</button>${mine?`<button class="msgAction" data-chat-action="edit" data-message="${m.id}">✎ Edit</button><button class="msgAction" data-chat-action="delete" data-message="${m.id}">Delete</button>`:''}</div></details>`;
+ return `<div class="msgRow ${mine?'mine':''}"><img class="msgAvatar" src="${sender?avatarImageForProfile(sender):'assets/pwt_logo.svg'}"><div class="msgBubble"><div class="msgHeader"><b>${esc(mine?'You':sender?.display_name||'PWT Player')}</b><time>${new Date(m.created_at).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}${m.edited_at?' · edited':''}</time></div>${content}<div class="msgMeta">${m.edited_at?'edited · ':''}${new Date(m.created_at).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}${mine?` <span class="msgTicks ${readCount?'read':''}">✓${readCount?'✓':''}</span>`:''}</div>${reactHtml?`<div class="msgReactions">${reactHtml}</div>`:''}${actions}</div></div>`
 }
 function chatAttachmentHtml(m){const url=chatState.attachmentUrls.get(m.attachment_path);if(!url)return'<div class="chatFileLink">Loading attachment…</div>';const mime=m.attachment_mime||'';if(m.message_type==='voice'||mime.startsWith('audio/'))return `<audio class="chatAudio" controls preload="metadata" src="${url}"></audio>`;if(mime.startsWith('image/'))return `<a href="${url}" target="_blank" rel="noopener"><img class="chatImage" src="${url}" alt="${esc(m.attachment_name||'Image')}"></a>`;if(mime.startsWith('video/'))return `<video class="chatVideo" controls preload="metadata" src="${url}"></video>`;return `<a class="chatFileLink" href="${url}" target="_blank" rel="noopener">📎 ${esc(m.attachment_name||'Open attachment')}</a>`}
 function renderReplyPreview(){const m=chatState.replyTo?chatState.messages.find(x=>x.id===chatState.replyTo):null;$('#chatReplyPreview').classList.toggle('show',!!m);$('#chatReplyText').textContent=m?`Replying to ${chatProfile(m.sender_id)?.display_name||'PWT Player'}: ${(m.body||m.attachment_name||m.message_type).slice(0,100)}`:''}
-async function markChatRead(id){if(!currentUser)return;const t=new Date().toISOString();await Promise.all([sb.from('chat_member_state').update({last_read_at:t,updated_at:t}).eq('conversation_id',id).eq('user_id',currentUser.id),sb.from('chat_notifications').update({read_at:t}).eq('user_id',currentUser.id).eq('conversation_id',id).is('read_at',null)]);chatState.notifications.forEach(n=>{if(n.conversation_id===id)n.read_at=t});chatSetBadge();renderChatList()}
+async function markChatRead(id){if(!chatIsVisible(id))return;const userId=currentUser.id,t=new Date().toISOString();const results=await Promise.all([sb.from('chat_member_state').update({last_read_at:t,updated_at:t}).eq('conversation_id',id).eq('user_id',userId),sb.from('chat_notifications').update({read_at:t}).eq('user_id',userId).eq('conversation_id',id).is('read_at',null)]);const error=results.find(r=>r.error)?.error;if(error){console.error('Read receipt failed',error);return}if(currentUser?.id!==userId)return;chatState.notifications.forEach(n=>{if(n.conversation_id===id&&new Date(n.created_at)<=new Date(t))n.read_at=t});chatSetBadge();renderChatList()}
+
 function subscribeChatThread(id){
  if(chatState.channel)sb.removeChannel(chatState.channel);chatState.presence={};
  chatState.channel=sb.channel('chat:'+id,{config:{private:true,presence:{key:currentUser.id}}})
   .on('broadcast',{event:'typing'},({payload})=>{if(payload.user_id===currentUser.id)return;const pr=chatProfile(payload.user_id);if(payload.typing){chatState.presence['typing:'+payload.user_id]=Date.now()+3500;$('#chatTyping').textContent=`${pr?.display_name||'Someone'} is typing…`;$('#chatTyping').classList.add('show');setTimeout(()=>{if((chatState.presence['typing:'+payload.user_id]||0)<Date.now())$('#chatTyping').classList.remove('show')},3700)}else $('#chatTyping').classList.remove('show')})
   .on('presence',{event:'sync'},()=>renderChatPresence())
-  .on('postgres_changes',{event:'*',schema:'public',table:'chat_messages',filter:`conversation_id=eq.${id}`},async()=>{await loadChatThread(id);await markChatRead(id);await loadChatHome();setTimeout(()=>{const b=$('#chatMessages');b.scrollTop=b.scrollHeight},30)})
+  .on('postgres_changes',{event:'*',schema:'public',table:'chat_messages',filter:`conversation_id=eq.${id}`},async()=>{await loadChatThread(id);await markChatRead(id);await loadChatHome()})
+  .on('postgres_changes',{event:'*',schema:'public',table:'pwt_chat_poll_votes'},async()=>{await loadChatPolls(id);if(chatState.selected===id)renderChatThread()})
+  .on('postgres_changes',{event:'*',schema:'public',table:'pwt_chat_polls',filter:`conversation_id=eq.${id}`},async()=>{await loadChatPolls(id);if(chatState.selected===id)renderChatThread()})
   .on('postgres_changes',{event:'*',schema:'public',table:'chat_message_reactions'},()=>loadChatThread(id).catch(console.error))
   .on('postgres_changes',{event:'UPDATE',schema:'public',table:'chat_member_state',filter:`conversation_id=eq.${id}`},()=>loadChatThread(id).catch(console.error))
   .subscribe(async status=>{if(status==='SUBSCRIBED'){await chatState.channel.track({user_id:currentUser.id,name:currentProfile?.display_name||'PWT Player',online_at:new Date().toISOString()});renderChatPresence()}else if(status==='CHANNEL_ERROR')$('#chatPresenceText').textContent='Realtime reconnecting…'});
@@ -2101,25 +2184,36 @@ function subscribeChatThread(id){
 function renderChatPresence(){const conv=chatConversation(chatState.selected);if(!conv||!chatState.channel)return;const st=chatState.channel.presenceState();const ids=new Set();Object.values(st).flat().forEach(x=>x?.user_id&&ids.add(x.user_id));if(conv.kind==='dm'){const peer=chatPeer(conv);$('#chatPresenceText').innerHTML=peer&&ids.has(peer.id)?'<span class="onlineDot"></span>online':'<span class="offlineDot"></span>offline'}else $('#chatPresenceText').innerHTML=`<span class="onlineDot"></span>${ids.size} online · ${chatMembers(conv.id).length} members`}
 async function sendTyping(on=true){if(!chatState.channel||!chatState.selected)return;const now=Date.now();if(on&&now-chatState.lastTypingSent<900)return;chatState.lastTypingSent=now;await chatState.channel.send({type:'broadcast',event:'typing',payload:{user_id:currentUser.id,typing:on}}).catch(()=>{})}
 
-async function sendChatMessage(){if(!currentUser||!chatState.selected)return;const body=$('#chatInput').value.trim();if(!body)return;$('#chatStatus').textContent='Sending…';const {data,error}=await sb.from('chat_messages').insert({conversation_id:chatState.selected,sender_id:currentUser.id,body,message_type:'text',reply_to:chatState.replyTo||null}).select('id').single();if(error){$('#chatStatus').textContent=error.message;PwtAudio?.play?.('error');return}$('#chatInput').value='';chatState.replyTo=null;renderReplyPreview();sendTyping(false);$('#chatStatus').textContent='';PwtAudio?.play?.('click');if(data?.id)sb.functions.invoke('pwt-chat-push',{body:{message_id:data.id}}).catch(()=>{});await loadChatThread(chatState.selected);await loadChatHome();setTimeout(()=>{$('#chatMessages').scrollTop=$('#chatMessages').scrollHeight},20)}
-async function sendChatAttachment(file,forcedType=null){if(!currentUser||!chatState.selected||!file)return;if(file.size>15*1024*1024){chatToast('Attachment too large','Maximum file size is 15 MB.');return}$('#chatStatus').textContent='Uploading '+file.name+'…';const path=`${chatState.selected}/${currentUser.id}/${Date.now()}-${chatSafeFileName(file.name)}`;const {error:upErr}=await sb.storage.from('pwt-chat').upload(path,file,{contentType:file.type||'application/octet-stream',upsert:false});if(upErr){$('#chatStatus').textContent=upErr.message;return}let type=forcedType||'file';if(!forcedType){if((file.type||'').startsWith('image/'))type='image';else if((file.type||'').startsWith('audio/'))type='voice'}const {data,error}=await sb.from('chat_messages').insert({conversation_id:chatState.selected,sender_id:currentUser.id,body:null,message_type:type,reply_to:chatState.replyTo||null,attachment_path:path,attachment_name:file.name,attachment_mime:file.type||'application/octet-stream',attachment_size:file.size}).select('id').single();if(error){$('#chatStatus').textContent=error.message;return}chatState.replyTo=null;renderReplyPreview();$('#chatStatus').textContent='';if(data?.id)sb.functions.invoke('pwt-chat-push',{body:{message_id:data.id}}).catch(()=>{});await loadChatThread(chatState.selected);await loadChatHome()}
+async function sendChatMessage(){
+ if(!currentUser||!chatState.selected||chatState.sending)return;
+ const input=$('#chatInput'),body=input.value.trim(),original=input.value,id=chatState.selected,userId=currentUser.id,reply=chatState.replyTo;if(!body)return;
+ chatState.sending=true;updateChatComposer();$('#chatStatus').textContent='Sending…';
+ try{const {data,error}=await sb.from('chat_messages').insert({conversation_id:id,sender_id:userId,body,message_type:'text',reply_to:reply||null}).select('id').single();if(error)throw error;
+ try{sessionStorage.removeItem('pwt-chat-draft:'+userId+':'+id)}catch(_){}
+ if(chatState.selected===id){if(input.value===original)input.value='';chatState.replyTo=null;renderReplyPreview();sendTyping(false);resizeChatInput();$('#chatStatus').textContent='Sent'}
+ if(data?.id)dispatchChatPush(data.id);
+ if(chatState.selected===id)await loadChatThread(id);await loadChatHome();
+ }catch(e){if(chatState.selected===id)$('#chatStatus').textContent='Message not sent. Your draft is kept — try again.';chatToast('Could not send message',e.message)}finally{chatState.sending=false;updateChatComposer();if(chatState.selected===id)input.focus()}
+}
+
+async function sendChatAttachment(file,forcedType=null){if(!currentUser||!chatState.selected||!file)return;const conversationId=chatState.selected,userId=currentUser.id,replyId=chatState.replyTo;if(file.size>15*1024*1024){chatToast('Attachment too large','Maximum file size is 15 MB.');return}$('#chatStatus').textContent='Uploading '+file.name+'…';const path=`${conversationId}/${userId}/${Date.now()}-${chatSafeFileName(file.name)}`;const {error:upErr}=await sb.storage.from('pwt-chat').upload(path,file,{contentType:file.type||'application/octet-stream',upsert:false});if(upErr){$('#chatStatus').textContent=upErr.message;return}let type=forcedType||'file';if(!forcedType){if((file.type||'').startsWith('image/'))type='image';else if((file.type||'').startsWith('audio/'))type='voice'}const {data,error}=await sb.from('chat_messages').insert({conversation_id:conversationId,sender_id:userId,body:null,message_type:type,reply_to:replyId||null,attachment_path:path,attachment_name:file.name,attachment_mime:file.type||'application/octet-stream',attachment_size:file.size}).select('id').single();if(error){$('#chatStatus').textContent=error.message;return}if(chatState.selected===conversationId){chatState.replyTo=null;renderReplyPreview();$('#chatStatus').textContent=''}if(data?.id)dispatchChatPush(data.id);if(chatState.selected===conversationId)await loadChatThread(conversationId);await loadChatHome()}
 async function toggleVoiceRecording(){if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){chatToast('Voice notes unavailable','This browser does not support audio recording.');return}if(chatState.mediaRecorder?.state==='recording'){chatState.mediaRecorder.stop();$('#chatMicBtn').classList.remove('recording');$('#chatStatus').textContent='Processing voice note…';return}try{chatState.mediaStream=await navigator.mediaDevices.getUserMedia({audio:true});chatState.recordChunks=[];const rec=new MediaRecorder(chatState.mediaStream);chatState.mediaRecorder=rec;rec.ondataavailable=e=>{if(e.data.size)chatState.recordChunks.push(e.data)};rec.onstop=async()=>{const mime=rec.mimeType||'audio/webm',blob=new Blob(chatState.recordChunks,{type:mime});chatState.mediaStream?.getTracks().forEach(t=>t.stop());chatState.mediaStream=null;const ext=mime.includes('mp4')?'m4a':'webm';const file=new File([blob],`PWT-Voice-${Date.now()}.${ext}`,{type:mime});await sendChatAttachment(file,'voice')};rec.start();$('#chatMicBtn').classList.add('recording');$('#chatStatus').textContent='Recording voice note… tap mic to stop.'}catch(e){chatToast('Microphone unavailable',e.message||'Permission was not granted.')}}
 
 async function handleMessageAction(action,id,emoji){const m=chatState.messages.find(x=>x.id===id);if(!m)return;if(action==='reply'){chatState.replyTo=id;renderReplyPreview();$('#chatInput').focus();return}if(action==='react'){const pick=emoji||prompt('React with emoji','🔥');if(!pick)return;const existing=chatState.reactions.find(r=>r.message_id===id&&r.user_id===currentUser.id&&r.emoji===pick);if(existing)await sb.from('chat_message_reactions').delete().eq('message_id',id).eq('user_id',currentUser.id).eq('emoji',pick);else await sb.from('chat_message_reactions').insert({message_id:id,user_id:currentUser.id,emoji:pick});await loadChatThread(chatState.selected);return}if(action==='reaction'){return handleMessageAction('react',id,emoji)}if(action==='star'){const ex=chatState.stars.find(x=>x.message_id===id);if(ex)await sb.from('chat_starred_messages').delete().eq('message_id',id).eq('user_id',currentUser.id);else await sb.from('chat_starred_messages').insert({message_id:id,user_id:currentUser.id});await loadChatThread(chatState.selected);return}if(action==='forward'){chatState.forwardMessage=m;renderForwardPicker();return}if(action==='hide'){await sb.from('chat_hidden_messages').insert({message_id:id,user_id:currentUser.id});await loadChatThread(chatState.selected);return}if(action==='edit'&&m.sender_id===currentUser.id){const body=prompt('Edit message',m.body||'');if(body===null)return;await sb.from('chat_messages').update({body:body.trim(),edited_at:new Date().toISOString()}).eq('id',id);await loadChatThread(chatState.selected);return}if(action==='delete'&&m.sender_id===currentUser.id){if(!confirm('Delete this message for everyone?'))return;await sb.from('chat_messages').update({body:null,deleted_at:new Date().toISOString()}).eq('id',id);await loadChatThread(chatState.selected)}}
 
-function openChatCreator(mode,conversation=null){if(!requireUser())return;chatState.dialogMode=mode;chatState.dialogConversation=conversation;$('#chatCreateTitle').textContent=mode==='dm'?'NEW PERSONAL CHAT':mode==='group'?'CREATE GROUP':mode==='add'?'ADD GROUP MEMBERS':'SELECT MEMBER';$('#chatGroupNameWrap').style.display=mode==='group'?'block':'none';$('#chatGroupName').value='';$('#chatGroupDescription').value='';$('#chatPeopleSearch').value='';$('#chatCreateMsg').textContent='';renderChatPeople();chatOpenOverlay('#chatCreateOverlay')}
-function renderChatPeople(){const q=$('#chatPeopleSearch').value.trim().toLowerCase(),mode=chatState.dialogMode,conv=chatState.dialogConversation,currentIds=new Set(conv?chatMembers(conv.id).map(x=>x.user_id):[]);const people=state.profiles.filter(p=>p.id!==currentUser?.id&&!currentIds.has(p.id)&&(!q||p.display_name.toLowerCase().includes(q)));$('#chatPeopleList').innerHTML=people.length?people.map(p=>`<label class="chatPerson"><img src="${avatarImageForProfile(p)}"><div><b>${esc(p.display_name)}</b><small>${p.player_id?'Tracked PWT player':'Community member'}</small></div><input type="${mode==='dm'?'radio':'checkbox'}" name="chatPersonPick" value="${p.id}"></label>`).join(''):'<div class="empty">No matching members.</div>'}
-async function confirmChatCreator(){const picks=[...document.querySelectorAll('#chatPeopleList input:checked')].map(x=>x.value),mode=chatState.dialogMode;if((mode==='dm'||mode==='add')&&!picks.length){$('#chatCreateMsg').textContent='Choose at least one member.';return}if(mode==='group'&&!picks.length){$('#chatCreateMsg').textContent='Choose at least one other member.';return}$('#chatCreateMsg').textContent='Working…';try{if(mode==='dm'){await createDm(picks[0])}else if(mode==='group'){const name=$('#chatGroupName').value.trim();if(!name){$('#chatCreateMsg').textContent='Give the group a name.';return}await createGroup(name,$('#chatGroupDescription').value.trim(),picks)}else if(mode==='add'){await sb.from('chat_members').insert(picks.map(id=>({conversation_id:chatState.dialogConversation.id,user_id:id,member_role:'member'})));await loadChatHome();await openChatConversation(chatState.dialogConversation.id)}chatCloseOverlay('#chatCreateOverlay')}catch(e){console.error(e);$('#chatCreateMsg').textContent=e.message||'Could not complete this action.'}}
+function openChatCreator(mode,conversation=null){if(!requireUser())return;chatState.peoplePicks=new Set();chatState.dialogMode=mode;chatState.dialogConversation=conversation;$('#chatCreateConfirm').textContent=mode==='group'?'Create group':mode==='dm'?'Start chatting':'Add members';$('#chatCreateTitle').textContent=mode==='dm'?'NEW PERSONAL CHAT':mode==='group'?'CREATE GROUP':mode==='add'?'ADD GROUP MEMBERS':'SELECT MEMBER';$('#chatGroupNameWrap').style.display=mode==='group'?'block':'none';$('#chatGroupName').value='';$('#chatGroupDescription').value='';$('#chatPeopleSearch').value='';$('#chatCreateMsg').textContent='';renderChatPeople();chatOpenOverlay('#chatCreateOverlay')}
+function renderChatPeople(){const q=$('#chatPeopleSearch').value.trim().toLowerCase(),mode=chatState.dialogMode,conv=chatState.dialogConversation,currentIds=new Set(conv?chatMembers(conv.id).map(x=>x.user_id):[]);const people=state.profiles.filter(p=>p.id!==currentUser?.id&&!currentIds.has(p.id)&&(!q||p.display_name.toLowerCase().includes(q)));$('#chatPeopleList').innerHTML=people.length?people.map(p=>`<label class="chatPerson"><img src="${avatarImageForProfile(p)}"><div><b>${esc(p.display_name)}</b><small>${p.player_id?'Tracked PWT player':'Community member'}</small></div><input type="${mode==='dm'?'radio':'checkbox'}" name="chatPersonPick" value="${p.id}" ${chatState.peoplePicks.has(p.id)?'checked':''}></label>`).join(''):'<div class="empty">No matching members.</div>'}
+async function confirmChatCreator(){const picks=[...chatState.peoplePicks],mode=chatState.dialogMode;if((mode==='dm'||mode==='add')&&!picks.length){$('#chatCreateMsg').textContent='Choose at least one member.';return}if(mode==='group'&&!picks.length){$('#chatCreateMsg').textContent='Choose at least one other member.';return}$('#chatCreateMsg').textContent='Working…';try{if(mode==='dm'){await createDm(picks[0])}else if(mode==='group'){const name=$('#chatGroupName').value.trim();if(!name){$('#chatCreateMsg').textContent='Give the group a name.';return}await createGroup(name,$('#chatGroupDescription').value.trim(),picks)}else if(mode==='add'){await sb.from('chat_members').insert(picks.map(id=>({conversation_id:chatState.dialogConversation.id,user_id:id,member_role:'member'})));await loadChatHome();await openChatConversation(chatState.dialogConversation.id)}chatCloseOverlay('#chatCreateOverlay')}catch(e){console.error(e);$('#chatCreateMsg').textContent=e.message||'Could not complete this action.'}}
 async function createDm(peerId){const key=[currentUser.id,peerId].sort().join(':');let {data:existing}=await sb.from('chat_conversations').select('*').eq('direct_key',key).maybeSingle();if(existing){await loadChatHome();return openChatConversation(existing.id)}const {data:conv,error}=await sb.from('chat_conversations').insert({kind:'dm',created_by:currentUser.id,direct_key:key}).select('*').single();if(error)throw error;const {error:mErr}=await sb.from('chat_members').insert([{conversation_id:conv.id,user_id:currentUser.id,member_role:'owner'},{conversation_id:conv.id,user_id:peerId,member_role:'member'}]);if(mErr){await sb.from('chat_conversations').delete().eq('id',conv.id);throw mErr}await loadChatHome();await openChatConversation(conv.id)}
 async function createGroup(name,description,people){const {data:conv,error}=await sb.from('chat_conversations').insert({kind:'group',name,description:description||null,created_by:currentUser.id}).select('*').single();if(error)throw error;const rows=[{conversation_id:conv.id,user_id:currentUser.id,member_role:'owner'},...people.map(id=>({conversation_id:conv.id,user_id:id,member_role:'member'}))];const {error:mErr}=await sb.from('chat_members').insert(rows);if(mErr){await sb.from('chat_conversations').delete().eq('id',conv.id);throw mErr}await loadChatHome();await openChatConversation(conv.id)}
 
 function renderForwardPicker(){const m=chatState.forwardMessage;if(!m)return;$('#chatForwardList').innerHTML=chatState.conversations.filter(c=>!chatMeState(c.id)?.archived).map(c=>`<button class="chatPerson" data-forward-to="${c.id}"><img src="${chatAvatar(c)}"><div><b>${esc(chatTitle(c))}</b><small>Forward here</small></div></button>`).join('');$('#chatForwardList').querySelectorAll('[data-forward-to]').forEach(b=>b.onclick=()=>forwardTo(b.dataset.forwardTo));chatOpenOverlay('#chatForwardOverlay')}
-async function forwardTo(conversationId){const m=chatState.forwardMessage;if(!m)return;let attachmentPath=m.attachment_path;if(m.attachment_path){const {data:blob,error:downErr}=await sb.storage.from('pwt-chat').download(m.attachment_path);if(downErr)return chatToast('Forward failed',downErr.message);attachmentPath=`${conversationId}/${currentUser.id}/${Date.now()}-${chatSafeFileName(m.attachment_name||'forwarded-file')}`;const {error:upErr}=await sb.storage.from('pwt-chat').upload(attachmentPath,blob,{contentType:m.attachment_mime||blob.type||'application/octet-stream'});if(upErr)return chatToast('Forward failed',upErr.message)}const payload={conversation_id:conversationId,sender_id:currentUser.id,body:m.body,message_type:m.message_type,attachment_path:attachmentPath,attachment_name:m.attachment_name,attachment_mime:m.attachment_mime,attachment_size:m.attachment_size,metadata:{...(m.metadata||{}),forwarded:true}};const {data,error}=await sb.from('chat_messages').insert(payload).select('id').single();if(error)return chatToast('Forward failed',error.message);if(data?.id)sb.functions.invoke('pwt-chat-push',{body:{message_id:data.id}}).catch(()=>{});chatCloseOverlay('#chatForwardOverlay');chatState.forwardMessage=null;await loadChatHome();chatToast('Forwarded',`Sent to ${chatTitle(chatConversation(conversationId))}`)}
+async function forwardTo(conversationId){const m=chatState.forwardMessage;if(!m)return;let attachmentPath=m.attachment_path;if(m.attachment_path){const {data:blob,error:downErr}=await sb.storage.from('pwt-chat').download(m.attachment_path);if(downErr)return chatToast('Forward failed',downErr.message);attachmentPath=`${conversationId}/${currentUser.id}/${Date.now()}-${chatSafeFileName(m.attachment_name||'forwarded-file')}`;const {error:upErr}=await sb.storage.from('pwt-chat').upload(attachmentPath,blob,{contentType:m.attachment_mime||blob.type||'application/octet-stream'});if(upErr)return chatToast('Forward failed',upErr.message)}const payload={conversation_id:conversationId,sender_id:currentUser.id,body:m.body,message_type:m.message_type,attachment_path:attachmentPath,attachment_name:m.attachment_name,attachment_mime:m.attachment_mime,attachment_size:m.attachment_size,metadata:{...(m.metadata||{}),forwarded:true}};const {data,error}=await sb.from('chat_messages').insert(payload).select('id').single();if(error)return chatToast('Forward failed',error.message);if(data?.id)dispatchChatPush(data.id);chatCloseOverlay('#chatForwardOverlay');chatState.forwardMessage=null;await loadChatHome();chatToast('Forwarded',`Sent to ${chatTitle(chatConversation(conversationId))}`)}
 
-async function openChatInfo(){const conv=chatConversation(chatState.selected);if(!conv)return;const mine=chatState.members.find(x=>x.conversation_id===conv.id&&x.user_id===currentUser.id),admin=['owner','admin'].includes(mine?.member_role),st=chatMeState(conv.id),peer=chatPeer(conv);let html=`<div class="signedProfile"><b>${esc(chatTitle(conv))}</b><span>${conv.kind==='group'?`${chatMembers(conv.id).length} members`:esc(peer?.display_name||'Direct message')}</span><br>${conv.is_official?'<span class="rolePill">OFFICIAL PWT</span>':''}</div><div class="chatInfoActions"><button class="chatAction ${st?.pinned?'on':''}" data-info="pin">${st?.pinned?'UNPIN':'PIN CHAT'}</button><button class="chatAction ${st?.muted_until&&new Date(st.muted_until)>new Date()?'on':''}" data-info="mute">${st?.muted_until&&new Date(st.muted_until)>new Date()?'UNMUTE':'MUTE 8H'}</button><button class="chatAction" data-info="archive">${st?.archived?'UNARCHIVE':'ARCHIVE'}</button>${conv.kind==='dm'?'<button class="chatAction danger" data-info="block">BLOCK / UNBLOCK</button>':''}${conv.kind==='group'&&!conv.is_official&&mine?.member_role!=='owner'?'<button class="chatAction danger" data-info="leave">LEAVE GROUP</button>':''}${conv.kind==='group'&&!conv.is_official&&mine?.member_role==='owner'?'<button class="chatAction danger" data-info="deleteGroup">DELETE GROUP</button>':''}</div>`;
+async function openChatInfo(){const conv=chatConversation(chatState.selected);if(!conv)return;const mine=chatState.members.find(x=>x.conversation_id===conv.id&&x.user_id===currentUser.id),admin=['owner','admin'].includes(mine?.member_role),st=chatMeState(conv.id),peer=chatPeer(conv);let html=`<div class="signedProfile"><b>${esc(chatTitle(conv))}</b><span>${conv.kind==='group'?`${chatMembers(conv.id).length} members`:'Direct message'}</span><br>${conv.is_official?'<span class="rolePill">OFFICIAL PWT</span>':''}</div><div class="chatInfoActions"><button class="chatAction ${st?.pinned?'on':''}" data-info="pin">${st?.pinned?'UNPIN':'PIN CHAT'}</button><button class="chatAction ${st?.muted_until&&new Date(st.muted_until)>new Date()?'on':''}" data-info="mute">${st?.muted_until&&new Date(st.muted_until)>new Date()?'NOTIFICATIONS MUTED':'NOTIFICATIONS'}</button><button class="chatAction" data-info="archive">${st?.archived?'UNARCHIVE':'ARCHIVE'}</button>${conv.kind==='dm'?'<button class="chatAction danger" data-info="block">BLOCK / UNBLOCK</button>':''}${conv.kind==='group'&&!conv.is_official&&mine?.member_role!=='owner'?'<button class="chatAction danger" data-info="leave">LEAVE GROUP</button>':''}${conv.kind==='group'&&!conv.is_official&&mine?.member_role==='owner'?'<button class="chatAction danger" data-info="deleteGroup">DELETE GROUP</button>':''}</div>`;
  if(conv.kind==='group'){html+=`${admin&&!conv.is_official?'<div class="chatInfoActions" style="margin-top:10px"><button class="chatAction" data-info="rename">RENAME GROUP</button></div>':''}<div class="lab" style="margin-top:15px">MEMBERS</div><div class="chatInfoMembers">${chatMembers(conv.id).map(m=>{const p=chatProfile(m.user_id);return `<div class="chatInfoMember"><img src="${p?avatarImageForProfile(p):'assets/pwt_logo.svg'}"><div><b>${esc(p?.display_name||'PWT Player')}</b><small>${m.member_role.toUpperCase()}</small></div><div>${admin&&!conv.is_official&&m.user_id!==currentUser.id&&m.member_role!=='owner'?`<button class="msgAction" data-member-action="role" data-user="${m.user_id}">${m.member_role==='admin'?'DEMOTE':'MAKE ADMIN'}</button><button class="msgAction" data-member-action="remove" data-user="${m.user_id}">REMOVE</button>`:''}</div></div>`}).join('')}</div>${admin&&!conv.is_official?'<button class="chatAction primary" data-info="add" style="width:100%;margin-top:8px">＋ ADD MEMBERS</button>':''}`}
  $('#chatInfoTitle').textContent=conv.kind==='group'?'GROUP INFO':'CHAT INFO';$('#chatInfoBody').innerHTML=html;$('#chatInfoBody').querySelectorAll('[data-info]').forEach(b=>b.onclick=()=>handleChatInfoAction(b.dataset.info));$('#chatInfoBody').querySelectorAll('[data-member-action]').forEach(b=>b.onclick=()=>handleMemberAction(b.dataset.memberAction,b.dataset.user));chatOpenOverlay('#chatInfoOverlay')}
-async function handleChatInfoAction(action){const conv=chatConversation(chatState.selected),st=chatMeState(conv.id);if(action==='pin')await sb.from('chat_member_state').update({pinned:!st?.pinned,updated_at:new Date().toISOString()}).eq('conversation_id',conv.id).eq('user_id',currentUser.id);if(action==='archive')await sb.from('chat_member_state').update({archived:!st?.archived,updated_at:new Date().toISOString()}).eq('conversation_id',conv.id).eq('user_id',currentUser.id);if(action==='mute'){const muted=st?.muted_until&&new Date(st.muted_until)>new Date();await sb.from('chat_member_state').update({muted_until:muted?null:new Date(Date.now()+8*3600e3).toISOString(),updated_at:new Date().toISOString()}).eq('conversation_id',conv.id).eq('user_id',currentUser.id)}if(action==='add'){chatCloseOverlay('#chatInfoOverlay');return openChatCreator('add',conv)}if(action==='rename'){const n=prompt('New group name',conv.name||'PWT Group');if(n&&n.trim())await sb.from('chat_conversations').update({name:n.trim(),updated_at:new Date().toISOString()}).eq('id',conv.id)}if(action==='deleteGroup'){if(!confirm('Delete this group and its message history for everyone?'))return;await sb.from('chat_conversations').delete().eq('id',conv.id);chatState.selected=null;$('#chatShell').classList.remove('threadOpen');chatCloseOverlay('#chatInfoOverlay')}if(action==='leave'){if(!confirm('Leave this conversation?'))return;await sb.from('chat_members').delete().eq('conversation_id',conv.id).eq('user_id',currentUser.id);chatState.selected=null;$('#chatShell').classList.remove('threadOpen');chatCloseOverlay('#chatInfoOverlay')}if(action==='block'&&conv.kind==='dm'){const peer=chatPeer(conv);if(!peer)return;const {data}=await sb.from('chat_blocks').select('*').eq('blocker_id',currentUser.id).eq('blocked_id',peer.id).maybeSingle();if(data)await sb.from('chat_blocks').delete().eq('blocker_id',currentUser.id).eq('blocked_id',peer.id);else await sb.from('chat_blocks').insert({blocker_id:currentUser.id,blocked_id:peer.id});chatToast(data?'Unblocked':'Blocked',peer.display_name)}await loadChatHome();if(chatState.selected)await openChatConversation(chatState.selected);chatCloseOverlay('#chatInfoOverlay')}
+async function handleChatInfoAction(action){const conv=chatConversation(chatState.selected),st=chatMeState(conv.id);if(action==='pin')await sb.from('chat_member_state').update({pinned:!st?.pinned,updated_at:new Date().toISOString()}).eq('conversation_id',conv.id).eq('user_id',currentUser.id);if(action==='archive')await sb.from('chat_member_state').update({archived:!st?.archived,updated_at:new Date().toISOString()}).eq('conversation_id',conv.id).eq('user_id',currentUser.id);if(action==='mute'){chatCloseOverlay('#chatInfoOverlay');return openChatMuteSettings(conv.id)}if(action==='add'){chatCloseOverlay('#chatInfoOverlay');return openChatCreator('add',conv)}if(action==='rename'){const n=prompt('New group name',conv.name||'PWT Group');if(n&&n.trim())await sb.from('chat_conversations').update({name:n.trim(),updated_at:new Date().toISOString()}).eq('id',conv.id)}if(action==='deleteGroup'){if(!confirm('Delete this group and its message history for everyone?'))return;await sb.from('chat_conversations').delete().eq('id',conv.id);chatState.selected=null;$('#chatShell').classList.remove('threadOpen');chatCloseOverlay('#chatInfoOverlay')}if(action==='leave'){if(!confirm('Leave this conversation?'))return;await sb.from('chat_members').delete().eq('conversation_id',conv.id).eq('user_id',currentUser.id);chatState.selected=null;$('#chatShell').classList.remove('threadOpen');chatCloseOverlay('#chatInfoOverlay')}if(action==='block'&&conv.kind==='dm'){const peer=chatPeer(conv);if(!peer)return;const {data}=await sb.from('chat_blocks').select('*').eq('blocker_id',currentUser.id).eq('blocked_id',peer.id).maybeSingle();if(data)await sb.from('chat_blocks').delete().eq('blocker_id',currentUser.id).eq('blocked_id',peer.id);else await sb.from('chat_blocks').insert({blocker_id:currentUser.id,blocked_id:peer.id});chatToast(data?'Unblocked':'Blocked',peer.display_name)}await loadChatHome();if(chatState.selected)await openChatConversation(chatState.selected);chatCloseOverlay('#chatInfoOverlay')}
 async function handleMemberAction(action,userId){const conv=chatConversation(chatState.selected),m=chatState.members.find(x=>x.conversation_id===conv.id&&x.user_id===userId);if(!m)return;if(action==='remove'){if(confirm('Remove this member from the group?'))await sb.from('chat_members').delete().eq('conversation_id',conv.id).eq('user_id',userId)}else if(action==='role'){await sb.from('chat_members').update({member_role:m.member_role==='admin'?'member':'admin'}).eq('conversation_id',conv.id).eq('user_id',userId)}await loadChatHome();await openChatConversation(conv.id);await openChatInfo()}
 
 async function shareCareerCardToChat(p){if(!requireUser())return;await initChatSystem();chatState.forwardMessage={body:`🏆 PWT CAREER CARD\n${p.display_name} · PWT Rating ${p.rating.toFixed(1)} · Rank #${p.ratingRank}\n${p.featuredTitle} · ${p.role} · K/R ${p.kr.toFixed(2)}`,message_type:'share',metadata:{share_type:'player_card',player_id:p.id,rating:p.rating,rank:p.ratingRank,title:birthdayDisplayTitle(p)}};renderForwardPicker()}
@@ -2127,10 +2221,222 @@ async function shareTeamsToChat(){if(!lastTeamShare)return;if(!requireUser())ret
 $('#shareTeamsChat')?.addEventListener('click',shareTeamsToChat);
 
 function urlBase64ToUint8Array(base64String){const padding='='.repeat((4-base64String.length%4)%4),base64=(base64String+padding).replace(/-/g,'+').replace(/_/g,'/'),raw=atob(base64),out=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out}
-async function enableChatPush(){if(!currentUser)return openAuth('Sign in before enabling notifications.');if(!('serviceWorker'in navigator)||!('PushManager'in window)){chatToast('Push unavailable','This browser does not support web push.');return}const permission=await Notification.requestPermission();if(permission!=='granted'){chatToast('Notifications not enabled','Permission was not granted.');return}try{const reg=await navigator.serviceWorker.ready;let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlBase64ToUint8Array(CHAT_VAPID_PUBLIC)});const j=sub.toJSON(),row={user_id:currentUser.id,endpoint:sub.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth,user_agent:navigator.userAgent,updated_at:new Date().toISOString()};const {error}=await sb.from('push_subscriptions').upsert(row,{onConflict:'endpoint'});if(error)throw error;localStorage.setItem('pwt_push_enabled','1');updateChatPushButton();chatToast('PWT notifications enabled','New messages can notify this device.')}catch(e){console.error(e);chatToast('Could not enable push',e.message||'Try again.') }}
-function updateChatPushButton(){const on=typeof Notification!=='undefined'&&Notification.permission==='granted'&&localStorage.getItem('pwt_push_enabled')==='1';$('#chatPushBtn').textContent=on?'🔔 NOTIFICATIONS ON':'🔔 ENABLE NOTIFICATIONS';$('#chatPushBtn').classList.toggle('on',on)}
+async function enableChatPush(){
+ if(!currentUser)return openAuth('Log in before enabling device notifications.');
+ if(!('Notification'in window)||!('serviceWorker'in navigator)||!('PushManager'in window)){chatToast('Device alerts unavailable','Your inbox and unread counts still work in this browser.');return}
+ const userId=currentUser.id;$('#chatDeviceEnable').disabled=true;
+ try{
+  const permission=await Notification.requestPermission();if(permission!=='granted'){updateChatPushButton();return}
+  const reg=await Promise.race([navigator.serviceWorker.ready,new Promise((_,reject)=>setTimeout(()=>reject(new Error('Reload PWT and try again.')),10000))]);
+  if(currentUser?.id!==userId)return;
+  let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlBase64ToUint8Array(CHAT_VAPID_PUBLIC)});
+  if(currentUser?.id!==userId){await sub.unsubscribe();return}
+  const j=sub.toJSON(),{error}=await sb.from('push_subscriptions').upsert({user_id:userId,endpoint:sub.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth,user_agent:navigator.userAgent,updated_at:new Date().toISOString()},{onConflict:'endpoint'});
+  if(error)throw error;
+  if(currentUser?.id!==userId)return;
+  localStorage.setItem('pwt_push_enabled:'+userId,'1');chatToast('Device alerts enabled','You can mute any conversation from its settings.');
+ }catch(e){chatToast('Could not enable device alerts',e.message||'Please try again.')}finally{updateChatPushButton()}
+}
+async function refreshChatPushStatus(){
+ if(!currentUser||!('serviceWorker'in navigator)||!('PushManager'in window))return;
+ const userId=currentUser.id;
+ try{const reg=await navigator.serviceWorker.getRegistration(),sub=await reg?.pushManager.getSubscription();
+ if(currentUser?.id!==userId)return;
+ if(!sub){localStorage.removeItem('pwt_push_enabled:'+userId);updateChatPushButton();return}
+ const {data,error}=await sb.from('push_subscriptions').select('endpoint').eq('user_id',userId).eq('endpoint',sub.endpoint).maybeSingle();
+ if(currentUser?.id!==userId)return;if(error){$('#chatPushStatus').textContent='Could not verify device registration. Your in-app inbox remains available.';return}
+ if(data)localStorage.setItem('pwt_push_enabled:'+userId,'1');else localStorage.removeItem('pwt_push_enabled:'+userId);updateChatPushButton();
+ }catch(_){$('#chatPushStatus').textContent='Could not verify device alerts on this browser. Try again when connected.'}
+}
+async function signOutPwt(){
+ const userId=currentUser?.id;
+ if(userId&&'serviceWorker'in navigator){
+  try{const reg=await navigator.serviceWorker.getRegistration(),sub=await reg?.pushManager?.getSubscription();
+   if(sub){await sub.unsubscribe();await sb.from('push_subscriptions').delete().eq('user_id',userId).eq('endpoint',sub.endpoint)}
+   localStorage.removeItem('pwt_push_enabled:'+userId);
+  }catch(_){chatToast('Device alerts may still be enabled','You can turn them off in browser notification settings.')}
+ }
+ const {error}=await sb.auth.signOut();if(error)chatToast('Could not sign out',error.message);
+}
 
-$('#newDmBtn')?.addEventListener('click',()=>openChatCreator('dm'));$('#newGroupBtn')?.addEventListener('click',()=>openChatCreator('group'));$('#chatCreateCancel')?.addEventListener('click',()=>chatCloseOverlay('#chatCreateOverlay'));$('#chatCreateConfirm')?.addEventListener('click',confirmChatCreator);$('#chatPeopleSearch')?.addEventListener('input',renderChatPeople);$('#chatInfoClose')?.addEventListener('click',()=>chatCloseOverlay('#chatInfoOverlay'));$('#chatForwardClose')?.addEventListener('click',()=>chatCloseOverlay('#chatForwardOverlay'));$('#chatBack')?.addEventListener('click',()=>{$('#chatShell').classList.remove('threadOpen');chatState.selected=null;if(chatState.channel){sb.removeChannel(chatState.channel);chatState.channel=null}renderChatList()});$('#chatInfoBtn')?.addEventListener('click',openChatInfo);$('#chatSend')?.addEventListener('click',sendChatMessage);$('#chatInput')?.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatMessage()}});$('#chatInput')?.addEventListener('input',()=>{sendTyping(true);clearTimeout(chatState.typingTimer);chatState.typingTimer=setTimeout(()=>sendTyping(false),1600)});$('#chatReplyCancel')?.addEventListener('click',()=>{chatState.replyTo=null;renderReplyPreview()});$('#chatAttachBtn')?.addEventListener('click',()=>$('#chatFile').click());$('#chatFile')?.addEventListener('change',async e=>{const f=e.target.files?.[0];e.target.value='';if(f)await sendChatAttachment(f)});$('#chatMicBtn')?.addEventListener('click',toggleVoiceRecording);$('#chatSearch')?.addEventListener('input',renderChatList);$$('[data-chat-filter]').forEach(b=>b.addEventListener('click',()=>{$$('[data-chat-filter]').forEach(x=>x.classList.remove('on'));b.classList.add('on');chatState.filter=b.dataset.chatFilter;renderChatList()}));$('#chatRefresh')?.addEventListener('click',()=>initChatSystem());$('#chatPushBtn')?.addEventListener('click',enableChatPush);$('#chatStarredBtn')?.addEventListener('click',()=>{$('#chatStarredBtn').classList.toggle('on');renderChatThread()});$('#chatThreadSearch')?.addEventListener('click',()=>{const q=prompt('Search this conversation');if(q===null)return;const lower=q.toLowerCase();$$('#chatMessages .msgRow').forEach(el=>el.style.display=el.textContent.toLowerCase().includes(lower)?'flex':'none')});
+function updateChatPushButton(){
+ const supported='Notification'in window&&'PushManager'in window&&'serviceWorker'in navigator;
+ const blocked=supported&&Notification.permission==='denied';
+ const on=supported&&Notification.permission==='granted'&&localStorage.getItem('pwt_push_enabled:'+currentUser?.id)==='1';
+ $('#chatPushBtn').textContent=on?'🔔 Alerts on':'🔔 Alerts';
+ $('#chatPushStatus').textContent=!supported?'Device alerts aren’t supported here. Your in-app inbox still works. On iPhone, open PWT from the Home Screen to enable alerts.':blocked?'Notifications are blocked in browser settings. Allow notifications for PWT, then enable device alerts here.':on?'This device is registered for push notifications. In-app alerts and unread counts stay active while you browse.':'Keep up when PWT is closed. Enable device alerts on this browser. You can mute individual conversations in chat settings.';
+ $('#chatDeviceEnable').hidden=on;$('#chatDeviceEnable').disabled=!supported||blocked;$('#chatDeviceDisable').hidden=!on;
+}
+
+async function dispatchChatPush(messageId){
+ for(let attempt=0;attempt<2;attempt++){
+  try{const {error}=await sb.functions.invoke('pwt-chat-push',{body:{message_id:messageId}});if(!error)return true}catch(_){}
+  if(attempt===0)await new Promise(resolve=>setTimeout(resolve,1500));
+ }
+ chatToast('Message saved','Device notifications could not be delivered right now. Players can still read your message in the Lobby or chat.');return false;
+}
+function closeChatComposeMenu(){$('#chatComposeMenu').hidden=true;$('#chatMoreBtn').setAttribute('aria-expanded','false')}
+$('#chatMoreBtn').addEventListener('click',()=>{const open=$('#chatComposeMenu').hidden;$('#chatComposeMenu').hidden=!open;$('#chatMoreBtn').setAttribute('aria-expanded',String(open));$('#chatEmojiPicker').hidden=true;if(open)$('#chatComposeMenu button:not([hidden])')?.focus()});
+$('#chatAccountBtn').addEventListener('click',()=>openAuth());
+document.addEventListener('click',e=>{if(!e.target.closest('#chatComposeMenu,#chatMoreBtn'))closeChatComposeMenu()});
+function chatMuteUntil(value,now=Date.now()){
+ if(value==='off')return null;
+ if(value==='forever')return '9999-12-31T23:59:59.000Z';
+ if(!['1','8','24'].includes(value))throw new Error('Choose a notification preference.');
+ return new Date(now+Number(value)*3600000).toISOString();
+}
+function openChatMuteSettings(id){
+ if(!currentUser||!chatConversation(id))return;
+ chatState.muteConversation=id;$('#chatMuteName').textContent=chatTitle(chatConversation(id));
+ const until=chatMeState(id)?.muted_until,muted=until&&new Date(until).getTime()>Date.now();
+ $('#chatMuteDuration option[value="keep"]').hidden=!muted;$('#chatMuteDuration').value=muted?'keep':'off';
+ $('#chatMuteMessage').textContent=muted?(new Date(until).getUTCFullYear()>=9999?'Currently muted until you turn it back on.':'Currently muted until '+new Date(until).toLocaleString()):'Currently receiving notifications.';
+ chatOpenOverlay('#chatMuteOverlay');
+}
+async function saveChatMutePreference(){
+ if(!currentUser||!chatState.muteConversation)return;
+ const id=chatState.muteConversation,userId=currentUser.id,value=$('#chatMuteDuration').value;
+ $('#chatMuteSave').disabled=true;$('#chatMuteMessage').textContent='Saving…';
+ try{const until=value==='keep'?chatMeState(id)?.muted_until||null:chatMuteUntil(value);const {error}=await sb.rpc('pwt_set_chat_mute',{p_conversation:id,p_muted_until:until});if(error)throw error;
+ if(currentUser?.id!==userId)return;
+ let st=chatMeState(id);if(st)st.muted_until=until;else chatState.memberStates.push({conversation_id:id,user_id:userId,muted_until:until});
+ chatCloseOverlay('#chatMuteOverlay');chatToast(until?'Chat muted':'Notifications on',chatTitle(chatConversation(id)));renderChatList();
+ }catch(e){$('#chatMuteMessage').textContent='Could not save your preference. '+(e.message||'Please try again.')}finally{$('#chatMuteSave').disabled=false}
+}
+$('#chatMuteSave').addEventListener('click',saveChatMutePreference);
+$('#chatMuteCancel').addEventListener('click',()=>chatCloseOverlay('#chatMuteOverlay'));
+// Follow the visible viewport when the mobile keyboard opens, not the physical screen height.
+function sizeChatViewport(){const v=window.visualViewport;document.documentElement.style.setProperty('--chat-viewport-height',(v?.height||innerHeight)+'px');document.documentElement.style.setProperty('--chat-viewport-top',(v?.offsetTop||0)+'px')}
+window.visualViewport?.addEventListener('resize',sizeChatViewport);
+window.visualViewport?.addEventListener('scroll',sizeChatViewport);
+window.addEventListener('resize',sizeChatViewport);sizeChatViewport();
+
+function playerLobby(){return chatState.conversations.find(c=>c.id===chatState.lobbyId)||chatState.conversations.find(c=>c.kind==='group'&&c.is_official&&/^pwt lobby$/i.test(c.name||''))}
+function showLobbyMode(on){document.body.classList.toggle('lobbyMode',on);$('#chatLobbyTab').setAttribute('aria-pressed',String(on));$('#chatPrivateTab').setAttribute('aria-pressed',String(!on));$('#chatWorkspaceTitle').textContent='Chats';}
+async function openPlayerLobby(){
+ showLobbyMode(true);if(!$('#chats').classList.contains('on'))navTo('chats');if(!currentUser)return;
+ if(chatState.joiningLobby)return;chatState.joiningLobby=true;
+ try{let lobby=playerLobby();if(!lobby){const {data,error}=await sb.rpc('pwt_join_lobby');if(error)throw error;chatState.lobbyId=data;await loadChatHome();lobby=playerLobby()}
+ if(!lobby)throw new Error('The Player Lobby is not available yet.');await openChatConversation(lobby.id);
+ }catch(e){clearChatThread();$('#chatMessages').innerHTML='<div class="chatEmpty"><div><h3>A home for every player.</h3><p>The shared Lobby needs its database setup before players can join.</p><button class="chatAction primary" data-chat-lobby>Try again</button></div></div>';$('#chatPresenceText').textContent='Lobby setup pending';chatToast('Lobby is not connected yet','The Lobby setup script needs to be applied before shared chat and polls are available.')}finally{chatState.joiningLobby=false}
+}
+async function loadChatPolls(id){
+ const userId=currentUser?.id;if(!userId)return;
+ const {data,error}=await sb.from('pwt_chat_polls').select('*').eq('conversation_id',id).order('created_at',{ascending:false}).limit(100);
+ if(currentUser?.id!==userId||chatState.selected!==id)return;
+ if(error){chatState.polls=[];chatState.pollOptions=[];chatState.pollVotes=[];chatState.pollsAvailable=false;return}
+ const polls=data||[],ids=polls.map(p=>p.id);
+ const [options,votes]=ids.length?await Promise.all([sb.from('pwt_chat_poll_options').select('*').in('poll_id',ids).order('position'),sb.from('pwt_chat_poll_votes').select('*').in('poll_id',ids)]):[{data:[]},{data:[]}];
+ if(currentUser?.id!==userId||chatState.selected!==id)return;
+ chatState.pollsAvailable=!options.error&&!votes.error;chatState.polls=polls;chatState.pollOptions=options.data||[];chatState.pollVotes=votes.data||[];
+}
+function chatPollHtml(id){
+ const poll=chatState.polls?.find(p=>p.id===id);if(!poll)return '<div class="chatPollUnavailable">This availability poll could not load. Refresh the chat to try again.</div>';
+ const options=chatState.pollOptions.filter(o=>o.poll_id===id),votes=chatState.pollVotes.filter(v=>v.poll_id===id),mine=votes.find(v=>v.user_id===currentUser?.id);
+ return `<section class="chatPoll" aria-label="Availability poll"><div class="chatPollEyebrow">◷ MATCH PLAN · ${poll.closed_at?'CLOSED':'VOTE FOR ONE'}</div><h3>${esc(poll.question)}</h3><p>Pick what works for you. You can change your vote.</p><div class="chatPollOptions">${options.map(o=>{const chosen=votes.filter(v=>v.option_id===o.id),percent=votes.length?Math.round(chosen.length/votes.length*100):0;return `<button class="chatPollOption ${mine?.option_id===o.id?'chosen':''}" data-poll-vote="${esc(o.id)}" data-poll-id="${esc(id)}" aria-pressed="${mine?.option_id===o.id}" ${poll.closed_at||chatState.votingPoll===id?'disabled':''}><span class="chatPollProgress" style="width:${percent}%"></span><span class="chatPollLabel">${mine?.option_id===o.id?'✓ ':''}${esc(o.label)}</span><span class="chatPollCount">${chosen.length} · ${percent}%</span></button>`}).join('')}</div><div class="chatPollFooter"><span>${votes.length} ${votes.length===1?'player has':'players have'} voted · Votes are visible to this chat</span>${poll.creator_id===currentUser?.id&&!poll.closed_at?`<button data-poll-close="${esc(id)}">Close poll</button>`:''}</div>${votes.length?`<details class="chatPollVoters"><summary>See who’s playing</summary>${options.map(o=>`<p><b>${esc(o.label)}</b> ${esc(votes.filter(v=>v.option_id===o.id).map(v=>chatProfile(v.user_id)?.display_name||'Player').join(', ')||'No votes yet')}</p>`).join('')}</details>`:''}</section>`;
+}
+async function openChatPollCreator(){
+ if(!currentUser)return openAuth('Log in to plan a match with the Lobby.');
+ if(chatConversation(chatState.selected)?.kind!=='group')return chatToast('Group polls only','Open a group conversation to plan a match.');
+ chatState.pollConversation=chatState.selected;$('#chatPollQuestion').value='When can you play tonight?';['8:00 PM','9:00 PM','10:00 PM','Not playing tonight','',''].forEach((value,i)=>$('#chatPollOption'+i).value=value);$('#chatPollCreateMsg').textContent='Include your group’s timezone in the question when choosing times.';chatOpenOverlay('#chatPollOverlay');
+}
+async function createChatPoll(){
+ const id=chatState.pollConversation,question=$('#chatPollQuestion').value.trim(),options=Array.from({length:6},(_,i)=>$('#chatPollOption'+i).value.trim()).filter(Boolean);
+ if(!id||!currentUser||chatConversation(id)?.kind!=='group')return;
+ if(!question||options.length<2||new Set(options.map(s=>s.toLowerCase())).size!==options.length){$('#chatPollCreateMsg').textContent='Add a question and at least two different answers.';return}
+ $('#chatPollCreate').disabled=true;$('#chatPollCreateMsg').textContent='Posting your match plan…';
+ try{const {data,error}=await sb.rpc('pwt_create_poll',{p_conversation:id,p_question:question,p_options:options});if(error)throw error;chatCloseOverlay('#chatPollOverlay');if(data?.message_id)dispatchChatPush(data.message_id);if(chatState.selected===id){await loadChatThread(id);jumpChatLatest()}await loadChatHome()}
+ catch(e){$('#chatPollCreateMsg').textContent=chatState.pollsAvailable===false?'Shared polls are not configured yet. Apply the Lobby/polls database setup first.':e.message||'Could not create the poll. Your options are kept.'}finally{$('#chatPollCreate').disabled=false}
+}
+async function voteChatPoll(poll,option){
+ if(chatState.votingPoll)return;chatState.votingPoll=poll;const id=chatState.selected,box=$('#chatMessages'),top=box.scrollTop;
+ try{const {error}=await sb.rpc('pwt_vote_poll',{p_poll:poll,p_option:option});if(error)throw error;await loadChatPolls(id);if(chatState.selected===id){renderChatThread();box.scrollTop=top}}
+ catch(e){chatToast('Vote not saved',e.message||'Please try again.')}finally{chatState.votingPoll=null;if(chatState.selected===id){renderChatThread();box.scrollTop=top}}
+}
+async function closeChatPoll(id){try{const {error}=await sb.rpc('pwt_close_poll',{p_poll:id});if(error)throw error;await loadChatPolls(chatState.selected);renderChatThread()}catch(e){chatToast('Could not close poll',e.message)}}
+$('#chatLobbyTab').addEventListener('click',openPlayerLobby);
+$('#chatPrivateTab').addEventListener('click',()=>{showLobbyMode(false);clearChatThread()});
+$('#chatPlanMatch').addEventListener('click',()=>{closeChatComposeMenu();openChatPollCreator()});
+$('#chatPollCreate').addEventListener('click',createChatPoll);
+$('#chatPollCancel').addEventListener('click',()=>chatCloseOverlay('#chatPollOverlay'));
+document.addEventListener('click',e=>{if(e.target.closest('[data-chat-lobby]'))openPlayerLobby();if(e.target.closest('[data-chat-plan]'))openChatPollCreator();const vote=e.target.closest('[data-poll-vote]');if(vote)voteChatPoll(vote.dataset.pollId,vote.dataset.pollVote);const close=e.target.closest('[data-poll-close]');if(close)closeChatPoll(close.dataset.pollClose)});
+
+// Shared chat surfaces use the same membership-scoped data as the conversation list.
+function chatIsVisible(id){return !!id&&!!currentUser&&chatState.selected===id&&$('#chats').classList.contains('on')&&!document.hidden&&(!matchMedia('(max-width:800px)').matches||$('#chatShell').classList.contains('threadOpen'))}
+function chatMuted(id){const until=chatMeState(id)?.muted_until;return !!until&&new Date(until).getTime()>Date.now()}
+function chatPreview(c){const m=chatLast(c.id);return !m?'Start the conversation':m.deleted_at?'Message deleted':m.message_type==='voice'?'Voice message':m.attachment_name?'Attachment: '+m.attachment_name:m.body||'New message'}
+function chatWelcomeHtml(){return '<div class="chatEmpty"><div><img class="chatEmptyLogo" src="assets/pwt_logo.svg" alt="PWT"><h3>Your squad. One place.</h3><p>Plan the next match, share a clutch moment,<br>or catch up with your teammates.</p><button class="chatAction primary" data-chat-start>Start a conversation</button></div></div>'}
+function updateChatComposer(){const enabled=!!currentUser&&!!chatState.selected&&!chatState.sending;['chatInput','chatSend','chatMoreBtn','chatAttachBtn','chatMicBtn','chatEmojiBtn','chatPlanMatch'].forEach(id=>$('#'+id).disabled=!enabled);$('#chatInput').placeholder=enabled?'Message…':'Choose a conversation';$('#chatPlanMatch').hidden=chatConversation(chatState.selected)?.kind!=='group';}
+function chatDraftKey(id){return 'pwt-chat-draft:'+currentUser?.id+':'+id}
+function saveChatDraft(){if(currentUser&&chatState.selected){try{sessionStorage.setItem(chatDraftKey(chatState.selected),$('#chatInput').value)}catch(_){}}}
+function restoreChatDraft(id){try{$('#chatInput').value=sessionStorage.getItem(chatDraftKey(id))||''}catch(_){$('#chatInput').value=''}resizeChatInput()}
+function resizeChatInput(){const input=$('#chatInput');input.style.height='auto';input.style.height=Math.min(input.scrollHeight,120)+'px'}
+function renderChatHome(){
+ const box=$('#chatHomeRecent');if(!box)return;
+ const lobby=playerLobby(),unread=lobby?chatUnread(lobby.id):0;
+ $('#chatHomeUnread').textContent=unread?`${unread} unread in the Lobby`:'PLAYER LOBBY';
+ if(!currentUser){box.innerHTML='<div class="chatWelcome"><b>Your whole squad. One conversation.</b>See who’s available, vote on match times, and chat with every PWT player.<br><button class="chatAction primary" data-chat-login>Log in to join</button></div>';return}
+ if(chatState.homeError){box.innerHTML='<div class="chatWelcome"><b>The Lobby couldn’t load</b>Open the Lobby to reconnect.</div>';return}
+ box.innerHTML=lobby?`<button class="chatHomeRow" data-chat-lobby><img src="assets/pwt_logo.svg" alt=""><span><b>All-player Lobby</b><small>${esc(chatPreview(lobby))}</small></span>${unread?`<span class="chatUnread">${unread}</span>`:'<span>→</span>'}</button><div class="chatWelcome">Pick a time together.<br><span>Create a match poll from the + menu inside a group chat.</span></div>`:'<div class="chatWelcome"><b>One Lobby for everyone.</b>Open the shared Lobby to connect with the PWT community.<br><button class="chatAction primary" data-chat-lobby>Enter the Lobby →</button></div>';
+}
+function renderChatNotifications(){
+ const box=$('#chatNotificationList');if(!box)return;
+ const notes=chatState.notifications.slice(0,50);
+ box.innerHTML=!currentUser?'<div class="chatWelcome">Log in to see your notifications.</div>':notes.length?notes.map(n=>`<button class="chatNotificationItem ${n.read_at?'read':''}" data-chat-open="${esc(n.conversation_id)}"><b>${esc(n.title||'New message')}</b><p>${esc(n.body||'Open the conversation to catch up.')}</p><small>${n.read_at?'Read':'Unread'} · ${chatFmt(n.created_at)}</small></button>`).join(''):'<div class="chatWelcome"><b>You’re all caught up.</b>New messages will appear here, even while you’re exploring the leaderboard.</div>';
+ $('#chatMarkAllRead').disabled=!currentUser||!chatState.notifications.some(n=>!n.read_at);
+}
+async function markAllChatRead(){
+ if(!currentUser)return;const ids=chatState.notifications.filter(n=>!n.read_at).map(n=>n.id);if(!ids.length)return;
+ $('#chatMarkAllRead').disabled=true;const t=new Date().toISOString();
+ try{const {error}=await sb.from('chat_notifications').update({read_at:t}).eq('user_id',currentUser.id).in('id',ids);if(error)throw error;chatState.notifications.forEach(n=>{if(ids.includes(n.id))n.read_at=t});chatSetBadge();renderChatList()}catch(e){chatToast('Could not mark notifications read',e.message);renderChatNotifications()}
+}
+function openChatInbox(){renderChatNotifications();updateChatPushButton();chatOpenOverlay('#chatNotificationsOverlay');refreshChatPushStatus()}
+async function visitChat(id){chatCloseOverlay('#chatNotificationsOverlay');$('#chatToast').classList.remove('show');navTo('chats');if(!currentUser)return;if(!chatConversation(id))await loadChatHome();if(chatConversation(id))await openChatConversation(id);else chatToast('Conversation unavailable','You may no longer be a member of this chat.')}
+async function receiveChatNotification(n){
+ if(!currentUser||n.user_id!==currentUser.id)return;
+ if(chatState.notifications.some(x=>x.id===n.id))return;chatState.notifications.unshift(n);
+ if(chatIsVisible(n.conversation_id)){await markChatRead(n.conversation_id)}else{chatSetBadge();renderChatList();if(!chatMuted(n.conversation_id))chatToast(n.title||'New message',n.body,n.conversation_id)}
+}
+async function loadOlderChatMessages(){
+ const id=chatState.selected,first=chatState.messages[0];if(!id||!first||chatState.loadingOlder)return;chatState.loadingOlder=true;
+ const box=$('#chatMessages'),height=box.scrollHeight,top=box.scrollTop;
+ try{const {data,error}=await sb.from('chat_messages').select('*').eq('conversation_id',id).lt('created_at',first.created_at).order('created_at',{ascending:false}).limit(100);if(error)throw error;if(chatState.selected!==id)return;chatState.hasOlder=(data||[]).length===100;const ids=(data||[]).map(m=>m.id);const [rr,hr]=await Promise.all([ids.length?sb.from('chat_message_reactions').select('*').in('message_id',ids):Promise.resolve({data:[]}),sb.from('chat_hidden_messages').select('message_id').eq('user_id',currentUser.id)]);if(chatState.selected!==id)return;const hidden=new Set((hr.data||[]).map(x=>x.message_id));chatState.messages=[...(data||[]).reverse().filter(m=>!hidden.has(m.id)),...chatState.messages];chatState.reactions=[...(rr.data||[]),...chatState.reactions];await hydrateChatAttachments(data||[]);if(chatState.selected!==id)return;renderChatThread();box.scrollTop=top+box.scrollHeight-height}catch(e){chatToast('Could not load older messages',e.message)}finally{chatState.loadingOlder=false}
+}
+function cancelChatRecording(){const rec=chatState.mediaRecorder;if(rec&&rec.state==='recording'){rec.onstop=null;rec.stop()}chatState.mediaStream?.getTracks().forEach(t=>t.stop());chatState.mediaStream=null;chatState.mediaRecorder=null;$('#chatMicBtn').classList.remove('recording')}
+function clearChatThread(){closeChatComposeMenu();saveChatDraft();cancelChatRecording();chatState.selected=null;chatState.messages=[];chatState.replyTo=null;chatState.hasOlder=false;$('#chatShell').classList.remove('threadOpen');if(chatState.channel){sb.removeChannel(chatState.channel);chatState.channel=null}$('#chatThreadName').textContent='Squad chat';$('#chatPresenceText').textContent='A home for your conversations';$('#chatMessages').innerHTML=chatWelcomeHtml();$('#chatInput').value='';$('#chatThreadAvatar').src='assets/pwt_logo.svg';$('#chatTyping').classList.remove('show');$('#chatEmojiPicker').hidden=true;$('#chatJumpLatest').hidden=true;$('#chatStatus').textContent='';renderReplyPreview();updateChatComposer();renderChatList()}
+function jumpChatLatest(){const box=$('#chatMessages');box.scrollTop=box.scrollHeight;$('#chatJumpLatest').hidden=true}
+async function disableChatPush(){
+ if(!currentUser)return;try{const reg=await navigator.serviceWorker?.getRegistration();const sub=await reg?.pushManager?.getSubscription();if(sub){const {error}=await sb.from('push_subscriptions').delete().eq('user_id',currentUser.id).eq('endpoint',sub.endpoint);if(error)throw error;await sub.unsubscribe()}localStorage.removeItem('pwt_push_enabled:'+currentUser.id);updateChatPushButton();chatToast('Device alerts turned off','Your in-app inbox and unread badges are still active.')}catch(e){chatToast('Could not turn off alerts',e.message)}
+}
+document.addEventListener('click',e=>{
+ const open=e.target.closest('[data-chat-open]');if(open){visitChat(open.dataset.chatOpen).catch(err=>chatToast('Could not open chat',err.message));return}
+ if(e.target.closest('[data-chat-login]'))openAuth('Log in to join your squad in chat.');
+ if(e.target.closest('[data-chat-start]')){navTo('chats');if(currentUser)openChatCreator('dm')}
+ if(e.target.closest('[data-chat-group]')){navTo('chats');if(currentUser)openChatCreator('group')}
+ if(e.target.closest('[data-chat-inbox]'))openChatInbox();
+});
+document.addEventListener('keydown',e=>{const overlay=$('.chatOverlay.show');if(e.key==='Escape'){closeChatComposeMenu();if(overlay)chatCloseOverlay('#'+overlay.id);$('#chatEmojiPicker').hidden=true;return}if(e.key==='Tab'&&overlay){const items=[...overlay.querySelectorAll('button,input,textarea,select,[tabindex="0"]')].filter(el=>!el.disabled&&el.getClientRects().length);if(!items.length)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+$('#chatNotificationsClose').addEventListener('click',()=>chatCloseOverlay('#chatNotificationsOverlay'));
+$('#chatNotificationsOverlay').addEventListener('click',e=>{if(e.target===$('#chatNotificationsOverlay'))chatCloseOverlay('#chatNotificationsOverlay')});
+$('#chatMarkAllRead').addEventListener('click',markAllChatRead);
+$('#chatDeviceEnable').addEventListener('click',enableChatPush);
+$('#chatDeviceDisable').addEventListener('click',disableChatPush);
+$('#chatToastOpen').addEventListener('click',()=>visitChat($('#chatToastOpen').dataset.conversation).catch(e=>chatToast('Could not open chat',e.message)));
+$('#chatEmojiBtn').addEventListener('click',()=>{closeChatComposeMenu();$('#chatEmojiPicker').hidden=!$('#chatEmojiPicker').hidden});
+$('#chatEmojiPicker').addEventListener('click',e=>{const emoji=e.target.closest('[data-emoji-insert]');if(!emoji)return;const input=$('#chatInput');input.setRangeText(emoji.dataset.emojiInsert,input.selectionStart,input.selectionEnd,'end');$('#chatEmojiPicker').hidden=true;input.focus();resizeChatInput();saveChatDraft()});
+$('#chatInput').addEventListener('input',()=>{resizeChatInput();saveChatDraft()});
+$('#chatThreadQuery').addEventListener('input',renderChatThread);
+$('#chatSearchClose').addEventListener('click',()=>{$('#chatThreadSearchBar').hidden=true;$('#chatThreadQuery').value='';renderChatThread()});
+$('#chatJumpLatest').addEventListener('click',jumpChatLatest);
+$('#chatMessages').addEventListener('scroll',()=>{const b=$('#chatMessages');$('#chatJumpLatest').hidden=!chatState.selected||b.scrollHeight-b.scrollTop-b.clientHeight<180});
+document.addEventListener('visibilitychange',()=>{if(chatIsVisible(chatState.selected))markChatRead(chatState.selected).catch(console.error)});
+window.addEventListener('online',()=>{if(currentUser)initChatSystem()});
+window.addEventListener('offline',()=>{$('#chatStatus').textContent='You’re offline. Your draft is saved in this tab.'});
+updateChatComposer();renderChatHome();renderChatNotifications();
+
+$('#chatPeopleList').addEventListener('change',e=>{const input=e.target;if(!input.matches('input'))return;if(chatState.dialogMode==='dm')chatState.peoplePicks.clear();if(input.checked)chatState.peoplePicks.add(input.value);else chatState.peoplePicks.delete(input.value);$('#chatCreateMsg').textContent=chatState.peoplePicks.size+' member(s) selected';});
+
+$('#newDmBtn')?.addEventListener('click',()=>openChatCreator('dm'));$('#newGroupBtn')?.addEventListener('click',()=>openChatCreator('group'));$('#chatCreateCancel')?.addEventListener('click',()=>chatCloseOverlay('#chatCreateOverlay'));$('#chatCreateConfirm')?.addEventListener('click',confirmChatCreator);$('#chatPeopleSearch')?.addEventListener('input',renderChatPeople);$('#chatInfoClose')?.addEventListener('click',()=>chatCloseOverlay('#chatInfoOverlay'));$('#chatForwardClose')?.addEventListener('click',()=>chatCloseOverlay('#chatForwardOverlay'));$('#chatBack')?.addEventListener('click',clearChatThread);$('#chatInfoBtn')?.addEventListener('click',openChatInfo);$('#chatSend')?.addEventListener('click',sendChatMessage);$('#chatInput')?.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();sendChatMessage()}});$('#chatInput')?.addEventListener('input',()=>{sendTyping(true);clearTimeout(chatState.typingTimer);chatState.typingTimer=setTimeout(()=>sendTyping(false),1600)});$('#chatReplyCancel')?.addEventListener('click',()=>{chatState.replyTo=null;renderReplyPreview()});$('#chatAttachBtn')?.addEventListener('click',()=>{closeChatComposeMenu();$('#chatFile').click()});$('#chatFile')?.addEventListener('change',async e=>{const f=e.target.files?.[0];e.target.value='';if(f)await sendChatAttachment(f)});$('#chatMicBtn')?.addEventListener('click',toggleVoiceRecording);$('#chatSearch')?.addEventListener('input',renderChatList);$$('[data-chat-filter]').forEach(b=>b.addEventListener('click',()=>{$$('[data-chat-filter]').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-pressed','false')});b.classList.add('on');b.setAttribute('aria-pressed','true');chatState.filter=b.dataset.chatFilter;renderChatList()}));$('#chatRefresh')?.addEventListener('click',()=>initChatSystem());$('#chatPushBtn')?.addEventListener('click',openChatInbox);$('#chatStarredBtn')?.addEventListener('click',()=>{$('#chatStarredBtn').classList.toggle('on');$('#chatStarredBtn').setAttribute('aria-pressed',String($('#chatStarredBtn').classList.contains('on')));renderChatThread()});$('#chatThreadSearch')?.addEventListener('click',()=>{$('#chatThreadSearchBar').hidden=!$('#chatThreadSearchBar').hidden;if(!$('#chatThreadSearchBar').hidden)$('#chatThreadQuery').focus();else{$('#chatThreadQuery').value='';renderChatThread()}});
 
 
 function initFx(){

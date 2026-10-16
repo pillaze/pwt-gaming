@@ -1,4 +1,4 @@
-const VERSION = 'pwt-v11-1-tab-branding';
+const VERSION = 'pwt-v11-4-mobile-chat';
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 const PRECACHE = [
@@ -7,6 +7,8 @@ const PRECACHE = [
   '/manifest.webmanifest',
   '/offline.html',
   '/assets/pwt_logo.svg',
+  '/assets/chat.css',
+  '/assets/account-person.svg',
   '/assets/pwt_trophy.svg',
   '/assets/pwt_battlefield_hero_4k.webp',
   '/assets/tournament-banner.jpeg',
@@ -89,7 +91,12 @@ self.addEventListener('push', event => {
 
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  const target = event.notification?.data?.url || '/';
+  const data = event.notification?.data || {};
+  let destination;
+  try { destination = new URL(data.url || '/', self.location.origin); }
+  catch { destination = new URL('/', self.location.origin); }
+  if (data.conversation_id) destination.searchParams.set('chat', data.conversation_id);
+  const target = destination.origin === self.location.origin ? destination.href : self.location.origin + '/';
   event.waitUntil((async () => {
     const windows = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
     for (const client of windows) {
